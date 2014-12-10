@@ -1,0 +1,110 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    background-color: lightgray;
+}
+
+
+a:hover {
+	outline: none ! important;
+	color: black ! important;
+}
+
+a {
+	text-decoration: none;
+	color:#777;
+}
+.topbar {
+	background: white;
+	border-width: 0px;
+	box-shadow: 0px 0px 6px;
+	font-size: 16px;
+	width: 100%;
+	height: 50px;
+	z-index: 2;
+	position: fixed;
+}
+
+.topbar > ul > li {
+	display: inline-block;
+	margin-top: .5vh;
+}
+
+.navbar-brand {font-weight: bold;}
+
+.sidebar {
+	background-color: #d42333;
+	position: fixed;
+	height: 100vh;
+	box-shadow: 0px 0px 5px;
+	z-index: 1;
+}
+
+.active > a, a:hover, a:active, a:focus {
+	outline: none;
+	background: transparent ! important;
+}
+
+.vertical {
+    margin-top: 4.25vh;
+    width: 10vh;
+}
+
+.vertical > li {
+	padding-top: 5vh;
+	height: 19.75vh;
+}
+
+.sidebar > ul {
+	width: inherit;
+}
+
+.background {
+	background-color: #a91d2a;
+}
+
+.content {
+	width: 85vw;
+	height: 85vh;
+	margin-left: 10.625vw;
+	margin-top: 11.5vh;
+	background-color: white;
+	position: fixed;
+	box-shadow: 0px 0px 10px;
+	border-radius: 10px;
+	z-index: 0;
+}
+
+ul > .active {
+	background-color: #a91d2a ! important;
+}
+
+h1 {
+	margin-top: 0;
+}
+
+.form-control {
+	width: 50vw ! important;
+}
+
+table {
+	margin-top: 5px;
+}
+
+ul > li > a.collapsed {
+	background-color: white ! important;
+}
+
+li > a.collapsed:hover {
+	background-color: lightblue ! important;
+
+}
+
+li > a.gray, .gray:hover {
+	background-color: lightblue ! important;
+	height: inherit;
+}
+
+a {
+	color:#777 ! important;
+}
