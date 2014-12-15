@@ -62,16 +62,14 @@ elseif(!$_POST['sometido'])
     <div class="col-sm-9">
       <input type="text" class="form-control" id="title" name="title" placeholder="T&iacute;tulo" required
       <?php if(isset($datos_proyecto['title'])) print 'value="'.$datos_proyecto['title'].'"'?>
-      >
     </div>
   </div>
 
   <div class="form-group">
     <label for="message" class="col-sm-3 control-label">Mensaje</label>
     <div class="col-sm-9">
-      <textarea class="form-control" id="message" name="message" placeholder="Mensaje" required>
+      <textarea class="form-control" id="message" name="message" placeholder="Mensaje" required></textarea>
       <?php if(isset($datos_proyecto['message'])) print 'value="'.$datos_proyecto['message'].'"'?>
-      </textarea>
     </div>
   </div>
 
@@ -80,7 +78,6 @@ elseif(!$_POST['sometido'])
     <div class="col-sm-9">
       <input type="text" class="form-control" id="faculty" name="faculty" placeholder="Facultad" required
       <?php if(isset($datos_proyecto['faculty'])) print 'value="'.$datos_proyecto['faculty'].'"'?>
-      >
     </div>
   </div>
 
@@ -89,7 +86,6 @@ elseif(!$_POST['sometido'])
     <div class="col-sm-9">
       <input type="text" pattern="-?\d{1,3}\.\d+" class="form-control" id="lat" name="lat" placeholder="Latitud" required
       <?php if(isset($datos_proyecto['lat'])) print 'value="'.$datos_proyecto['lat'].'"'?>
-      >
     </div>
   </div>
 
@@ -98,19 +94,18 @@ elseif(!$_POST['sometido'])
     <div class="col-sm-9">
       <input type="text" pattern="-?\d{1,3}\.\d+" class="form-control" id="lon" name="lon" placeholder="Longitud" required
       <?php if(isset($datos_proyecto['lon'])) print 'value="'.$datos_proyecto['lon'].'"'?>
-      >
     </div>
   </div>
 
-      <input type="hidden" class="form-control" id="sometido" name="sometido" value="1">
-
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
+      <input type="hidden" class="form-control" id="sometido" name="sometido" value="1">
       <button type="submit" class="btn btn-default">Send information</button>
     </div>
   </div>
   
 </form>
+
 <?php
 }
 else
