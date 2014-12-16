@@ -27,10 +27,10 @@
 <!-- topbar y sidebar -->
   <header>
       <nav class="topbar">
-        <a href="contenido.html" class="navbar-brand">Seguridad UPRRP</a>
+        <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
-          <li><a class="activo" href="incidentes.html">Incidentes</a></li>
-          <li><a href="usuarios.html">Usuarios</a></li>
+          <li><a class="activo" href="incidentes.php">Incidentes</a></li>
+          <li><a href="usuarios.php">Usuarios</a></li>
         </ul>
       </nav>
       <nav class="sidebar">

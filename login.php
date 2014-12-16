@@ -27,7 +27,7 @@
 <!-- topbar y sidebar -->
   <header >
       <nav class="topbar">
-        <a href="index.html" class="navbar-brand">Seguridad UPRRP</a>
+        <a href="login.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
           <li><a>Incidentes</a></li>
           <li><a>Usuarios</a></li>
@@ -46,7 +46,7 @@
 
   <body>
     <div class="container-fluid content">
-      <form class="form-horizontal login" role="form" method="post">
+      <form class="form-horizontal login" role="form" method="post" action="loginaction.php">
         <div class="form-group">
           <label for="nombres" class="col-sm-3 control-label">Usuario</label>
           <div class="col-sm-9">

@@ -27,13 +27,12 @@
 <!-- topbar y sidebar -->
   <header >
       <nav class="topbar">
-        <a href="contenido.html" class="navbar-brand">Seguridad UPRRP</a>
+        <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
-          <li><a href="incidentes.html">Incidentes</a></li>
-          <li><a href="usuarios.html">Usuarios</a></li>
+          <li><a href="incidentes.php">Incidentes</a></li>
+          <li><a class="activo" href="usuarios.php">Usuarios</a></li>
         </ul>
       </nav>
-
       <nav class="sidebar">
         <ul class="vertical nav" >
           <li role="presentation"><a href="#world" role="tab" data-toggle="tab" ><img src="imagenes/world.png" /></a></li>
@@ -45,7 +44,24 @@
   </header>
 
   <body>
-    <div class="tab-content container-fluid content" >
+    <div class="tab-content container-fluid content">
+      <div role="tabpanel" class="tab-pane active" id="incidentes"> 
+        <h1>Usuarios</h1>
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_encargadaN">Usuario nuevo</button>
+        <div id="panel_encargadaN" class="collapse"><div id="encargadaN"></div></div>
+        <script>
+        $('#encargadaN').load('info_usuario.php').fadeIn("slow");
+        </script>
+        <table class="table table-condensed">
+          <tbody>
+            <tr><td>Ejemplo</td></tr>
+            <tr><td>Ejemplo</td></tr>
+            <tr><td>Ejemplo</td></tr>
+            <tr><td>Ejemplo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      
       <div role="tabpanel" class="tab-pane" id="world">
           <h1>World</h1>
       </div>
