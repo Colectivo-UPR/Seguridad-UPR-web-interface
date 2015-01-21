@@ -1,0 +1,20 @@
+# -FrontPage-
+
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthName www.asseen-ontvsite.com
+AuthUserFile /var/chroot/home/content/d/i/v/diversions/html/_vti_pvt/service.pwd
+AuthGroupFile /var/chroot/home/content/d/i/v/diversions/html/_vti_pvt/service.grp
+
+AddHandler server-parsed .htm
+AddHandler server-parsed .html
+AddHandler application/x-httpd-php .php 

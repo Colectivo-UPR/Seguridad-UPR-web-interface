@@ -1,43 +1,69 @@
+<?php
+require_once("manejo_BD.php");
 
+if(isset($_GET['id']))
+{
+  $seleccion="encargado";
+  $datos_encargado=busca_datos_tabla($seleccion, array("id"=>$_GET['id']), array(), array("*"));
+  $datos_encargado=$datos_encargado[0];
+  $id = $_GET['id'];
+  //print_r($datos_encargado);
+}
+elseif(isset($_POST['id']))
+{
+  $id=$_POST['id'];
+}
+else
+{
+  $id=NULL;
+}
+if(!$_POST['sometido'])
+{
+?>
   <form class="form-horizontal" role="form" method="post" action="info_encargado.php">
 
   <div class="form-group">
     <label for="nombres" class="col-sm-3 control-label">Nombres</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" required>
+      <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" required
       <?php if(isset($datos_encargado['nombres'])) print 'value="'.$datos_encargado['nombres'].'"'?>
+      >
     </div>
   </div>
 
   <div class="form-group">
     <label for="apellidos" class="col-sm-3 control-label">Apellidos</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+      <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required
       <?php if(isset($datos_encargado['apellidos'])) print 'value="'.$datos_encargado['apellidos'].'"'?>
+    >
     </div>
   </div>
 
   <div class="form-group">
     <label for="username" class="col-sm-3 control-label">Nombre usuario</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="username" name="username" placeholder="Nombre usuario" required>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Nombre usuario" required
       <?php if(isset($datos_encargado['username'])) print 'value="'.$datos_encargado['username'].'"'?>
+      >
     </div>
   </div>
 
   <div class="form-group">
     <label for="email" class="col-sm-3 control-label">email</label>
     <div class="col-sm-9">
-      <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
+      <input type="email" class="form-control" id="email" name="email" placeholder="email" required
       <?php if(isset($datos_encargado['email'])) print 'value="'.$datos_encargado['email'].'"'?>
+      >
     </div>
   </div>
 
   <div class="form-group">
     <label for="email" class="col-sm-3 control-label">Tel&eacute;fono</label>
     <div class="col-sm-9">
-      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
+      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono"
       <?php if(isset($datos_encargado['telefono'])) print 'value="'.$datos_encargado['telefono'].'"'?>
+      >
 
     </div>
   </div>
@@ -65,9 +91,9 @@
 }
 else
 {
-	unset($_POST['sometido']);
-	$_POST['id']=$id;
-	inserta_BD("encargado",$_POST);
-	header("Location: panel.php?seleccion=encargado");
+  unset($_POST['sometido']);
+  $_POST['id']=$id;
+  inserta_BD("encargado",$_POST);
+  header("Location: panel.php?seleccion=encargado");
 }
 ?>

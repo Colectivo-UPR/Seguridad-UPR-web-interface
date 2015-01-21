@@ -29,7 +29,6 @@
       <nav class="topbar">
         <a href="login.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
-          <li><a>Incidentes</a></li>
           <li><a>Usuarios</a></li>
         </ul>
       </nav>

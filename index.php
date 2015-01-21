@@ -29,7 +29,6 @@
       <nav class="topbar">
         <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
-          <li><a href="incidentes.php">Incidentes</a></li>
           <li><a href="usuarios.php">Usuarios</a></li>
         </ul>
       </nav>
@@ -39,16 +38,57 @@
           <li role="presentation"><a href="#world" role="tab" data-toggle="tab" ><img src="imagenes/world.png" /></a></li>
           <li role="presentation"><a href="#phone" role="tab" data-toggle="tab" ><img src="imagenes/phone.png" /></a></li>
           <li role="presentation"><a href="#sign" role="tab" data-toggle="tab" ><img src="imagenes/sign.png" /></a></li>
-          <li role="presentation"><aass="menu"><a href="#stars" role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
+          <li role="presentation"><a href="#trolley" role="tab" data-toggle="tab" ><img src="imagenes/trolley.png" /></a></li>
+          <li role="presentation"><a href="#stars" role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
         </ul>
   </header>
 
   <body>
     <div class="tab-content container-fluid content" >
       <div role="tabpanel" class="tab-pane" id="world">
-          <h1>World</h1>
-      </div>
+        <h1>Incidentes</h1>
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
+        Crear incidente
+        </button>
+        <div id="panel_incidenteN" class="collapse"><div id="incidenteN"></div></div>
+        <script>
+        $('#incidenteN').load('info_incidente.php').fadeIn("slow");
+        </script>
 
+        <?php  
+        require_once("funciones.php");
+
+        $token="8ca1821b3c1dfc947268768acfaae76567803ddd";
+        $servicio= "http://54.165.138.75:8000";
+
+        $incidentes= curl_get($servicio, "incidents", $token);
+        ?>
+
+        <?php 
+        if(count($incidentes))
+        {
+          $i=0;
+          foreach($incidentes['results'] as $incidente)
+          {
+          ?>
+          <tr>
+          <td>
+              <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
+                <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
+              </button>
+              <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
+              <script>
+                $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
+              </script>
+          </td>
+          </tr>
+          <?php
+            $i++;
+          }
+        }
+        ?>
+
+      </div>
       <div role="tabpanel" class="tab-pane" id="phone">
           <h1>Phone</h1>
       </div>
