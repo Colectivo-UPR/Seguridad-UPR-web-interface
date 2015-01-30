@@ -26,9 +26,6 @@ a {
 	position: fixed;
 }
 
-.panel {
-	border-radius: 0px ! important;
-}
 
 .topbar > ul > li {
 	display: inline-block;
@@ -87,7 +84,7 @@ ul > .active {
 }
 
 
-.form-control {
+.form-control { 
 	width: 45vw ! important;
 }
 

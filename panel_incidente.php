@@ -2,8 +2,7 @@
 require_once("funciones.php");
 
 $token="8ca1821b3c1dfc947268768acfaae76567803ddd";
-$servicio= "http://54.172.3.196:8000";
-
+$servicio= "http://136.145.181.112:80"
 $incidentes= curl_get($servicio, "incidents", $token);
 
 ?>
