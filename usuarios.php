@@ -62,23 +62,23 @@
       </div>
       
       <div role="tabpanel" class="tab-pane" id="world">
-          <h1>World</h1>
+          <h1>Lo mismo que index.php</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="phone">
-          <h1>Phone</h1>
+          <h1>Lo mismo que index.php</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="sign">
-          <h1>Sign</h1>
+          <h1>Lo mismo que index.php</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="trolley">
-          <h1>Trolley</h1>
+          <h1>Lo mismo que index.php</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="stars">
-          <h1>Stars</h1>
+          <h1>Lo mismo que index.php</h1>
       </div>
     </div>
   </body>
