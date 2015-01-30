@@ -7,8 +7,10 @@ function curl_post($server, $route, $datos, $token = NULL)
 	$service_url = "$server/$route/";
 	$curl = curl_init($service_url);
 	$curl_post_data =$datos;
-//	$curl_post_data =json_decode($datos,true);
-	
+	//var_dump($curl_post_data);
+	//$curl_post_data =json_decode($datos,true);
+	//var_dump($curl_post_data);
+
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_POST, true);
 	curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
@@ -20,7 +22,7 @@ function curl_post($server, $route, $datos, $token = NULL)
 		die('error: ' . var_export($info));
 	}
 	curl_close($curl);
-	$decoded = json_decode($curl_response);
+	$decoded = json_decode($curl_response, true);
 	//print_r($info);
 	if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
 		die('error occured: ' . $decoded->response->errormessage);

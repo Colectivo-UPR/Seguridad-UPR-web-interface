@@ -49,14 +49,14 @@
         <div class="form-group">
           <label for="nombres" class="col-sm-3 control-label">Usuario</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control form-login" id="username" name="username" placeholder="Usuario" required value="prueba">
+            <input type="text" class="form-control form-login" id="username" name="username" placeholder="Usuario" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="apellidos" class="col-sm-3 control-label">Contraseña</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control form-login" id="password" name="password" placeholder="Contraseña" required value="test">
+            <input type="password" class="form-control form-login" id="password" name="password" placeholder="Contraseña" required>
           </div>
         </div>
         <button type="submit" class="btn btn-default">Iniciar sesión</button>
