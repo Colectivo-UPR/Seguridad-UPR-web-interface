@@ -46,6 +46,15 @@
   <body>
     <div class="tab-content container-fluid content" >
       <div role="tabpanel" class="tab-pane" id="world">
+<?php 
+/* require_once("funciones.php");
+
+$token="8ca1821b3c1dfc947268768acfaae76567803ddd";
+$servicio= "http://136.145.181.112:8080"
+$incidentes= curl_get($servicio, "incidents", $token);
+
+*/ ?> <!-- Creo que no funciona hasta que el servidor funciones !-->
+
         <h1>Incidentes</h1>
         <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
         Crear incidente
