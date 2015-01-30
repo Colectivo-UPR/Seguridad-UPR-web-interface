@@ -51,6 +51,8 @@
         <script>
         $('#encargadaN').load('info_usuario.php').fadeIn("slow");
         </script>
+
+
         <table class="table table-condensed">
           <tbody>
             <tr><td>Ejemplo</td></tr>
