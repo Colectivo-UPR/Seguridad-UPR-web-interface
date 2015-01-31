@@ -45,12 +45,12 @@
   <body>
     <div class="tab-content container-fluid content">
       <div role="tabpanel" class="tab-pane active" id="incidentes"> 
- <h1>Usuarios</h1>
-<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_encargadaN">Usuario nuevo</button>
-<div id="panel_encargadaN" class="collapse"><div id="encargadaN"></div></div>
-<script>
-$('#encargadaN').load('info_usuario.php').fadeIn("slow");
-</script>
+        <h1>Usuarios</h1>
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_encargadaN">Usuario nuevo</button>
+        <div id="panel_encargadaN" class="collapse"><div id="encargadaN"></div></div>
+        <script>
+        $('#encargadaN').load('info_usuario.php').fadeIn("slow");
+        </script>
 
 
         <table class="table table-condensed">

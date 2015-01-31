@@ -56,11 +56,10 @@
         </script>
 
         <?php  
+        session_start();
         require_once("funciones.php");
-
-        $token="8ca1821b3c1dfc947268768acfaae76567803ddd";
         $servicio= "http://136.145.181.112:8080";
-
+        $token = $_SESSION['token'];
         $incidentes= curl_get($servicio, "incidents", $token);
         ?>
 
