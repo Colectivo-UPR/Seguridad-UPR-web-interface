@@ -1,7 +1,8 @@
 <?php
+session_start();
 
 require_once("funciones.php");
-$token="f7dfca98ac1273bdefb088da0b54ca35c7cffdcb";
+$token=$_SESSION['token'];
 $servicio= "http://136.145.181.112:8080";
 
 if(isset($_GET['datos']))

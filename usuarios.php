@@ -15,18 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
-    <script>
-var url = document.location.toString();
-if (url.match('#')) {
-    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-} 
-
-// Change hash for page-reload
-$('.nav-tabs a').on('click', function (e) {
-    window.location.hash = e.target.hash;
-})
-    </script>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,6 +29,7 @@ $('.nav-tabs a').on('click', function (e) {
         <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
           <li><a class="activo" href="usuarios.php">Usuarios</a></li>
+          <li class="navbar-right"><a href="logout.php">Logout</a></li>
         </ul>
       </nav>
       <nav class="sidebar">
