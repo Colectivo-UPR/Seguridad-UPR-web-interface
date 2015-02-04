@@ -98,19 +98,19 @@
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="phone">
-          <h1>Phone</h1>
+          <h1>Telefonos de seguridad</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="sign">
-          <h1>Sign</h1>
+          <h1>RUtas de desalojo</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="trolley">
-          <h1>Trolley</h1>
+          <h1>Rutas del trolley</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="stars">
-          <h1>Stars</h1>
+          <h1>REcursos tel. emergencia oficina uni</h1>
       </div>
     </div>
   </body>
