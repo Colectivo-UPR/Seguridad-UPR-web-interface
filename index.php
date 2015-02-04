@@ -60,6 +60,12 @@
           <h2> </h2>
           <?php  
           session_start();
+          if (isset($_SESSION['token'])) {
+
+          }
+          else {
+            header("location: login.php");
+          }
           require_once("funciones.php");
           $servicio= "http://136.145.181.112:8080";
           $token = $_SESSION['token'];
