@@ -30,6 +30,7 @@
         <a href="login.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
           <li><a>Usuarios</a></li>
+          <li class="navbar-right"><a href="logout.php">Logout</a></li>
         </ul>
       </nav>
 
@@ -43,7 +44,7 @@
         </ul>
   </header>
 
-  <body>      
+  <body>     
     <div class="container-fluid content"> 
       <form class="form-horizontal login" role="form" method="post" action="loginaction.php">
         <div class="form-group">

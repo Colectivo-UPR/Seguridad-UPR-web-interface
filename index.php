@@ -54,39 +54,40 @@
         <script>
         $('#incidenteN').load('info_incidente.php').fadeIn("slow");
         </script>
-
-        <?php  
-        session_start();
-        require_once("funciones.php");
-        $servicio= "http://136.145.181.112:8080";
-        $token = $_SESSION['token'];
-        $incidentes= curl_get($servicio, "incidents", $token);
-        ?>
-
-        <?php 
-        if(count($incidentes))
-        {
-          $i=0;
-          foreach($incidentes['results'] as $incidente)
-          {
+        <div>
+          <h2> </h2>
+          <?php  
+          session_start();
+          require_once("funciones.php");
+          $servicio= "http://136.145.181.112:8080";
+          $token = $_SESSION['token'];
+          $incidentes= curl_get($servicio, "incidents", $token);
           ?>
-          <tr>
-          <td>
-              <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
-                <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
-              </button>
-              <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
-              <script>
-                $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
-              </script>
-          </td>
-          </tr>
-          <?php
-            $i++;
-          }
-        }
-        ?>
 
+          <?php 
+          if(count($incidentes))
+          {
+            $i=0;
+            foreach($incidentes['results'] as $incidente)
+            {
+            ?>
+            <tr>
+            <td>
+                <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
+                  <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
+                </button>
+                <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
+                <script>
+                  $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
+                </script>
+            </td>
+            </tr>
+            <?php
+              $i++;
+            }
+          }
+          ?>
+        </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="phone">
           <h1>Phone</h1>

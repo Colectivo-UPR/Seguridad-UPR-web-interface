@@ -2,7 +2,6 @@ body, html {
 	height: 100%;
 	width: 100%;
 	background-color: lightgray;
-	overflow-y: auto;
 }
 
 a:hover {
@@ -108,4 +107,14 @@ table {
 
 .btn {
 	margin: 10px;
+
+}
+
+.btn:focus {
+	outline: 0 ! important;
+}
+
+.navbar-right {
+	padding-right: 1vw;
+	font-weight: bold;
 }
