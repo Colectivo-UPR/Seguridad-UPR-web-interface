@@ -43,11 +43,11 @@
       </nav>
       <nav class="sidebar">
         <ul class="vertical nav" >
-          <li role="presentation"><a href="#world" role="tab" data-toggle="tab" ><img src="imagenes/world.png" /></a></li>
-          <li role="presentation"><a href="#phone" role="tab" data-toggle="tab" ><img src="imagenes/phone.png" /></a></li>
-          <li role="presentation"><a href="#sign" role="tab" data-toggle="tab" ><img src="imagenes/sign.png" /></a></li>
-          <li role="presentation"><a href="#trolley" role="tab" data-toggle="tab" ><img src="imagenes/trolley.png" /></a></li>
-          <li role="presentation" class="menu"><a href="#stars" role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/world.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/phone.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/sign.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/trolley.png" /></a></li>
+          <li role="presentation" class="active"><a href="#stars" role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
         </ul>
   </header>
 
@@ -70,26 +70,6 @@
             <tr><td>Ejemplo</td></tr>
           </tbody>
         </table>
-      </div>
-      
-      <div role="tabpanel" class="tab-pane" id="world">
-          <h1>Lo mismo que index.php</h1>
-      </div>
-
-      <div role="tabpanel" class="tab-pane" id="phone">
-          <h1>Lo mismo que index.php</h1>
-      </div>
-
-      <div role="tabpanel" class="tab-pane" id="sign">
-          <h1>Lo mismo que index.php</h1>
-      </div>
-
-      <div role="tabpanel" class="tab-pane" id="trolley">
-          <h1>Lo mismo que index.php</h1>
-      </div>
-
-      <div role="tabpanel" class="tab-pane" id="stars">
-          <h1>Lo mismo que index.php</h1>
       </div>
     </div>
   </body>
