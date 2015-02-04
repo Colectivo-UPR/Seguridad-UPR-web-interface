@@ -7,18 +7,24 @@ require_once("funciones.php");
 $server= "http://136.145.181.112:8080";
 $route= "api-token-auth";
 //print_r($_POST);
-$apos= "'"; 
 $datos= array("username"=>$_POST['username'],"password"=>$_POST['password']);
 //colectivo.uprrp@gmail.com
 //colectivo!uprrp
 $token=curl_post($server, $route, $datos, $token = NULL);
+// var_dump($token);
+$token=($token['non_field_errors']);
 $token=($token['token']);
-print $token['token'];
+$_SESSION['token'] = $token;
+
 
 if($token["token"])
 {
-	$_SESSION['token']=$token;
+	$_SESSION['token'] = $token;
+	print $_SESSION['token'];
 	header("Location: index.php");
+}
+elseif ($token['non_field_errors']){
+	echo "failed";
 }
 else
 {

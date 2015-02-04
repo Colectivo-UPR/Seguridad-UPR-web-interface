@@ -46,6 +46,10 @@
 
   <body>     
     <div class="container-fluid content"> 
+    <?php
+    session_start();
+
+    ?>
       <form class="form-horizontal login" role="form" method="post" action="loginaction.php">
         <div class="form-group">
           <label for="nombres" class="col-sm-3 control-label">Usuario</label>
