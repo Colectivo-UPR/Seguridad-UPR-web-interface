@@ -4,7 +4,7 @@ date_default_timezone_set('America/Anguilla');
 
 function curl_post($server, $route, $datos, $token = NULL)
 {
-	$service_url = "$server/$route/";
+	$service_url = "$server/$route";
 	$curl = curl_init($service_url);
 	$curl_post_data =$datos;
 	//var_dump($curl_post_data);
@@ -34,7 +34,7 @@ function curl_post($server, $route, $datos, $token = NULL)
 function curl_get($server, $route, $token)
 {
 
-	$service_url = "$server/$route/";
+	$service_url = "$server/$route";
 	$curl = curl_init($service_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Token $token"));

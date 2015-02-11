@@ -52,6 +52,9 @@
         <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
         Crear incidente
         </button>
+        <form action="order.php">
+        <input class="btn btn-default" type="submit" value="Cambiar el orden " id="order">
+        </form>
         <div id="panel_incidenteN" class="collapse"><div id="incidenteN"></div></div>
         <script>
         $('#incidenteN').load('info_incidente.php').fadeIn("slow");
@@ -66,12 +69,11 @@
           else {
             header("location: login.php");
           }
+
           require_once("funciones.php");
           $servicio= "http://136.145.181.112:8080";
-          $token = $_SESSION['token'];
-          $incidentes= curl_get($servicio, "incidents", $token);
+          $incidentes= curl_get($servicio, "incidents" . $_SESSION['order'], $_SESSION['token']);
           ?>
-
           <?php 
           if(count($incidentes))
           {

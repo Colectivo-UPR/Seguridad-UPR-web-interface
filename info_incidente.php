@@ -117,6 +117,6 @@ elseif(!$_POST['sometido'])
 else
 {
   unset($_POST['sometido']);
-  $a=curl_post($servicio,"create-incident",$_POST,$token);
+  $a=curl_post($servicio,"create-incident/",$_POST,$token);
 }
 ?>

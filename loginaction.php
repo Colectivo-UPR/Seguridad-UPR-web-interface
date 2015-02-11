@@ -5,7 +5,7 @@ session_start();
 
 require_once("funciones.php");
 $server= "http://136.145.181.112:8080";
-$route= "api-token-auth";
+$route= "api-token-auth/";
 //print_r($_POST);
 $datos= array("username"=>$_POST['username'],"password"=>$_POST['password']);
 //colectivo.upr@gmail.com
@@ -19,6 +19,7 @@ $_SESSION['token']=$token;
 if($token["token"])
 {
 	$_SESSION['token'] = $token;
+	$_SESSION['order'] = "/";
 	header("Location: index.php");
 }
 else

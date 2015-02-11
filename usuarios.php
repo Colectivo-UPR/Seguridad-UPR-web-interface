@@ -47,21 +47,78 @@
           <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/phone.png" /></a></li>
           <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/sign.png" /></a></li>
           <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/trolley.png" /></a></li>
-          <li role="presentation" class="active"><a href="#stars" role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
         </ul>
   </header>
 
   <body>
     <div class="tab-content container-fluid content">
-      <div role="tabpanel" class="tab-pane active" id="incidentes"> 
         <h1>Usuarios</h1>
-        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_encargadaN">Usuario nuevo</button>
-        <div id="panel_encargadaN" class="collapse"><div id="encargadaN"></div></div>
-        <script>
-        $('#encargadaN').load('info_usuario.php').fadeIn("slow");
-        </script>
+  <form class="form-horizontal" role="form" method="post" action="info_encargado.php">
 
+  <div class="form-group">
+    <label for="nombres" class="col-sm-3 control-label">Nombres</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" required
+      <?php if(isset($datos_encargado['nombres'])) print 'value="'.$datos_encargado['nombres'].'"'?>
+      >
+    </div>
+  </div>
 
+  <div class="form-group">
+    <label for="apellidos" class="col-sm-3 control-label">Apellidos</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required
+      <?php if(isset($datos_encargado['apellidos'])) print 'value="'.$datos_encargado['apellidos'].'"'?>
+    >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="username" class="col-sm-3 control-label">Nombre usuario</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="username" name="username" placeholder="Nombre usuario" required
+      <?php if(isset($datos_encargado['username'])) print 'value="'.$datos_encargado['username'].'"'?>
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email" class="col-sm-3 control-label">email</label>
+    <div class="col-sm-9">
+      <input type="email" class="form-control" id="email" name="email" placeholder="email" required
+      <?php if(isset($datos_encargado['email'])) print 'value="'.$datos_encargado['email'].'"'?>
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email" class="col-sm-3 control-label">Tel&eacute;fono</label>
+    <div class="col-sm-9">
+      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono"
+      <?php if(isset($datos_encargado['telefono'])) print 'value="'.$datos_encargado['telefono'].'"'?>
+      >
+
+    </div>
+  </div>
+<!--
+  <div class="form-group">
+    <label for="color" class="col-sm-3 control-label">color</label>
+    <div class="col-sm-9">
+      <input type="color" class="form-control" id="color" name="color"
+      <?php if(isset($datos_encargado['color'])) print 'value="'.$datos_encargado['color'].'"';else print 'value="#ffffff"'?>
+      >
+    </div>
+  </div>
+-->
+      <input type="hidden" class="form-control" id="sometido" name="sometido" value="1">
+      <input type="hidden" class="form-control" id="id" name="id" value="<?php print $id;?>">
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Env&iacute;a informaci&oacute;n</button>
+    </div>
+  </div>
         <table class="table table-condensed">
           <tbody>
             <tr><td>Ejemplo</td></tr>
@@ -70,7 +127,6 @@
             <tr><td>Ejemplo</td></tr>
           </tbody>
         </table>
-      </div>
     </div>
   </body>
 </html>

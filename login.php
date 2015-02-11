@@ -44,11 +44,11 @@
 
       <nav class="sidebar">
         <ul class="vertical nav" >
-          <li role="presentation"><a><img src="imagenes/world.png" /></a></li>
-          <li role="presentation"><a><img src="imagenes/phone.png" /></a></li>
-          <li role="presentation"><a><img src="imagenes/sign.png" /></a></li>
-          <li role="presentation"><a><img src="imagenes/trolley.png" /></a></li>
-          <li role="presentation"><a><img src="imagenes/stars.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/world.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/phone.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/sign.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/trolley.png" /></a></li>
+          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
         </ul>
   </header>
 
