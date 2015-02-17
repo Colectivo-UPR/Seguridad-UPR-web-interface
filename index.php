@@ -26,6 +26,20 @@
 
 <!-- topbar y sidebar -->
   <header >
+      <?php  
+      session_start();
+      // echo $_SESSION['order'];
+      // echo $_SESSION['token'];
+      if (isset($_SESSION['token'])) {
+
+      }
+      else {
+        header("location: login.php");
+      }
+
+      require_once("funciones.php");
+      $servicio= "http://136.145.181.112:8080";
+      ?>
       <nav class="topbar">
         <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
@@ -60,21 +74,8 @@
         $('#incidenteN').load('info_incidente.php').fadeIn("slow");
         </script>
         <div>
-          <h2> </h2>
-          <?php  
-          session_start();
-          if (isset($_SESSION['token'])) {
-
-          }
-          else {
-            header("location: login.php");
-          }
-
-          require_once("funciones.php");
-          $servicio= "http://136.145.181.112:8080";
-          $incidentes= curl_get($servicio, "incidents" . $_SESSION['order'], $_SESSION['token']);
-          ?>
           <?php 
+          $incidentes= curl_get($servicio, "incidents" . $_SESSION['order'], $_SESSION['token']);
           if(count($incidentes))
           {
             $i=0;
@@ -100,7 +101,24 @@
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="phone">
-          <h1>Telefonos de seguridad</h1>
+        <h1>Telefonos de seguridad</h1>
+        <?php 
+        $phones=curl_get($servicio, "phones/", $_SESSION['token']);
+
+        if(count($phones))
+          {
+            $i=0;
+            foreach($phones['results'] as $phones)
+            {
+                print nl2br("ID: " . $phones['id'] . "\r\n");
+                print nl2br("Lugar: " . $phones['place'] . "\r\n");
+                print nl2br("Descripcion: " . $phones['description'] . "\r\n");
+                print nl2br("Lat:" . $phones['lat'] . "\r\n");
+                print nl2br("Lon: " . $phones['lon'] . "\r\n");
+                print nl2br("");
+            }
+          }
+            ?>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="sign">
