@@ -167,7 +167,7 @@
       </div>
 
       <div role="tabpanel" class="tab-pane" id="stars">
-          <h1>Recursos tel. emergencia oficina uni</h1>
+          <h1>Servicios</h1>
       </div>
     </div>
   </body>
