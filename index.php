@@ -75,7 +75,7 @@
         </script>
         <div>
           <?php 
-          $incidentes= curl_get($servicio, "incidents" . $_SESSION['order'], $_SESSION['token']);
+          $incidentes= curl_get($servicio, "incidents"  . $_SESSION['// se supone que sea order'], $_SESSION['token']);
           if(count($incidentes))
           {
             $i=0;
@@ -101,9 +101,9 @@
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="phone">
-        <h1>Telefonos de seguridad</h1>
+        <h1>Telefonos</h1>
         <?php 
-        $phones=curl_get($servicio, "phones/", $_SESSION['token']);
+        $phones=curl_get($servicio, "phones", $_SESSION['token']);
 
         if(count($phones))
           {
@@ -119,10 +119,47 @@
             }
           }
             ?>
+        <h4>Crear telefono</h4>
+          <form>
+            <div class="form-group">
+              <label for="titulo" class="col-sm-3 control-label">Titulo</label>
+              <div class="col-sm-9 form-padding">
+                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description" class="col-sm-3 control-label">Descripcion</label>
+              <div class="col-sm-9 form-padding">
+                <input type="text" class="form-control" id="descricion" name="description" placeholder="Descripcion" required>
+              </div>
+            </div> 
+
+            <div class="form-group">
+              <label for="lugar" class="col-sm-3 control-label">Lugar</label>
+              <div class="col-sm-9 form-padding">
+                <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="lat" class="col-sm-3 control-label">Latitud</label>
+              <div class="col-sm-9 form-padding">
+                <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitud" required>
+              </div>
+            </div> 
+
+            <div class="form-group">
+              <label for="lon" class="col-sm-3 control-label">Longitud</label>
+              <div class="col-sm-9 form-padding">
+                <input type="text" class="form-control" id="lon" name="lon" placeholder="Longitud" required>
+              </div>
+            </div> 
+          </form>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="sign">
-          <h1>RUtas de desalojo</h1>
+          <h1>Rutas de desalojo</h1>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="trolley">
@@ -130,7 +167,7 @@
       </div>
 
       <div role="tabpanel" class="tab-pane" id="stars">
-          <h1>REcursos tel. emergencia oficina uni</h1>
+          <h1>Recursos tel. emergencia oficina uni</h1>
       </div>
     </div>
   </body>
