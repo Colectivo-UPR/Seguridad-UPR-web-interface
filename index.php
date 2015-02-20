@@ -62,6 +62,7 @@
   <body>
     <div class="tab-content container-fluid content" >
       <div role="tabpanel" class="tab-pane" id="world">
+        <!--alertas y reportes-->
         <h1>Incidentes</h1>
         <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
         Crear incidente
@@ -102,6 +103,7 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="phone">
         <h1>Telefonos</h1>
+        <!--mapa-->
         <?php 
         $phones=curl_get($servicio, "phones", $_SESSION['token']);
 
@@ -115,7 +117,6 @@
                 print nl2br("Descripcion: " . $phones['description'] . "\r\n");
                 print nl2br("Lat:" . $phones['lat'] . "\r\n");
                 print nl2br("Lon: " . $phones['lon'] . "\r\n");
-                print nl2br("");
             }
           }
             ?>
@@ -168,7 +169,11 @@
 
       <div role="tabpanel" class="tab-pane" id="stars">
           <h1>Servicios</h1>
+          <?php
+          // curl -X GET -H "Authorization: Token 709f60c18e51e49a971cc1f4642f76b6c5f4372f" http://136.145.181.112:8080/services/
+          ?>
       </div>
+
     </div>
   </body>
 </html>
