@@ -40,7 +40,7 @@
       require_once("funciones.php");
       $servicio= "http://136.145.181.112:8080";
       ?>
-      <nav class="topbar">
+      <nav class="topbar" >
         <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
           <li><a href="usuarios.php">Usuarios</a></li>
@@ -171,6 +171,7 @@
           <h1>Servicios</h1>
           <?php
           // curl -X GET -H "Authorization: Token 709f60c18e51e49a971cc1f4642f76b6c5f4372f" http://136.145.181.112:8080/services/
+          $servicio=curl_get($servicio, "servicio", $_SESSION['token']);
           ?>
       </div>
 
