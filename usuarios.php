@@ -29,6 +29,8 @@
       else {
         header("location: login.php");
       }
+      require_once("funciones.php");
+      $server= "http://136.145.181.112:8080";
       ?>
   </head>
 
@@ -54,79 +56,92 @@
   <body>
     <div class="tab-content container-fluid content">
         <h1>Usuarios</h1>
-  <form class="form-horizontal" role="form" method="post" action="info_encargado.php">
 
-  <div class="form-group">
-    <label for="nombres" class="col-sm-3 control-label">Nombres</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" required
-      <?php if(isset($datos_encargado['nombres'])) print 'value="'.$datos_encargado['nombres'].'"'?>
-      >
-    </div>
-  </div>
+    <form class="form-horizontal" role="form" method="post" action="useraction.php">
+      <div class="form-group">
+        <label for="nombres" class="col-sm-3 control-label">Nombre</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-login" id="nombre" name="nombre" placeholder="Nombre" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="apellidos" class="col-sm-3 control-label">Apellidos</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required
-      <?php if(isset($datos_encargado['apellidos'])) print 'value="'.$datos_encargado['apellidos'].'"'?>
-    >
-    </div>
-  </div>
+      <div class="form-group">
+        <label for="apellidos" class="col-sm-3 control-label">Apellidos</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-login" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="username" class="col-sm-3 control-label">Nombre usuario</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="username" name="username" placeholder="Nombre usuario" required
-      <?php if(isset($datos_encargado['username'])) print 'value="'.$datos_encargado['username'].'"'?>
-      >
-    </div>
-  </div>
+      <div class="form-group">
+        <label for="e-mail" class="col-sm-3 control-label">E-Mail</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-login" id="email" name="email" placeholder="E-Mail" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="email" class="col-sm-3 control-label">email</label>
-    <div class="col-sm-9">
-      <input type="email" class="form-control" id="email" name="email" placeholder="email" required
-      <?php if(isset($datos_encargado['email'])) print 'value="'.$datos_encargado['email'].'"'?>
-      >
-    </div>
-  </div>
+      <div class="form-group">
+        <label for="telefono" class="col-sm-3 control-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control form-login" id="password" name="password" placeholder="password" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="email" class="col-sm-3 control-label">Tel&eacute;fono</label>
-    <div class="col-sm-9">
-      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono"
-      <?php if(isset($datos_encargado['telefono'])) print 'value="'.$datos_encargado['telefono'].'"'?>
-      >
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default text-center">Env&iacute;a informaci&oacute;n</button>
+      </div>  
+    </form>
 
-    </div>
-  </div>
-<!--
-  <div class="form-group">
-    <label for="color" class="col-sm-3 control-label">color</label>
-    <div class="col-sm-9">
-      <input type="color" class="form-control" id="color" name="color"
-      <?php if(isset($datos_encargado['color'])) print 'value="'.$datos_encargado['color'].'"';else print 'value="#ffffff"'?>
-      >
-    </div>
-  </div>
--->
-      <input type="hidden" class="form-control" id="sometido" name="sometido" value="1">
-      <input type="hidden" class="form-control" id="id" name="id" value="<?php print $id;?>">
+    <table class="table table-condensed">
+    <?php
+    //curl GET -H "Authorization: Token <token>" 136.145.181.112:8080/staff-users/
+    $usuarios = curl_get($server, "staff-users", $_SESSION['token']);
+    ?>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Env&iacute;a informaci&oacute;n</button>
-    </div>
-  </div>
-        <table class="table table-condensed">
-          <tbody>
-            <tr><td>Ejemplo</td></tr>
-            <tr><td>Ejemplo</td></tr>
-            <tr><td>Ejemplo</td></tr>
-            <tr><td>Ejemplo</td></tr>
-          </tbody>
-        </table>
+      <?php
+      if(count($usuarios))
+      {
+        $i=0;
+        foreach($usuarios['results'] as $usuarios)
+        {
+
+          
+print $usuarios["first_name"] . "\r\n";
+print $usuarios["last_name"]. "\r\n";
+print $usuarios["email"]. "\r\n";
+
+      }
+    }
+    ?>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>E-Mail</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php
+      if(count($usuarios))
+      {
+        $i=0;
+        foreach($usuarios['results'] as $usuarios)
+        {
+
+          
+      ?>
+        <tr>
+          <td><?php print $usuarios['first_name'] . "\r\n";?></td>
+          <td><?php print $usuarios['last_name']. "\r\n";?></td>
+          <td><?php print $usuarios['email']. "\r\n";?></td>
+        </tr>
+      </tbody>
+    </table>
+    <?php
+      }
+    }
+    ?>
+    </table>
     </div>
   </body>
 </html>
