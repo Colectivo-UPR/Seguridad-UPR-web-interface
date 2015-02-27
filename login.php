@@ -58,7 +58,7 @@
         <div class="form-group">
           <label for="nombres" class="col-sm-3 control-label">Usuario</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control form-login" id="username" name="username" placeholder="Usuario" value="colectivo.upr@gmail.com"required>
+            <input type="text" class="form-control form-login" id="username" name="username" placeholder="Usuario" value="colectivo.upr@gmail.com" required>
           </div>
         </div>
 

@@ -120,3 +120,8 @@ table {
 	padding-right: 1vw;
 	font-weight: bold;
 }
+
+.edit {
+	height: inherit ! important;
+	width: inherit ! important;
+}

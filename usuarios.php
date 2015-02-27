@@ -1,3 +1,14 @@
+<?php  
+session_start();
+if (isset($_SESSION['token'])) {
+
+}
+else {
+  header("location: login.php");
+}
+require_once("funciones.php");
+$server= "http://136.145.181.112:8080";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--Configuracion de bootstap-->
@@ -21,17 +32,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <?php  
-    session_start();
-      if (isset($_SESSION['token'])) {
-
-      }
-      else {
-        header("location: login.php");
-      }
-      require_once("funciones.php");
-      $server= "http://136.145.181.112:8080";
-      ?>
   </head>
 
 <!-- topbar y sidebar -->
@@ -96,23 +96,7 @@
     //curl GET -H "Authorization: Token <token>" 136.145.181.112:8080/staff-users/
     $usuarios = curl_get($server, "staff-users", $_SESSION['token']);
     ?>
-
-      <?php
-      if(count($usuarios))
-      {
-        $i=0;
-        foreach($usuarios['results'] as $usuarios)
-        {
-
-          
-print $usuarios["first_name"] . "\r\n";
-print $usuarios["last_name"]. "\r\n";
-print $usuarios["email"]. "\r\n";
-
-      }
-    }
-    ?>
-    <table class="table table-condensed">
+    <table class="table table-condensed table-editable">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -125,22 +109,34 @@ print $usuarios["email"]. "\r\n";
       if(count($usuarios))
       {
         $i=0;
-        foreach($usuarios['results'] as $usuarios)
+        foreach($usuarios['results'] as $usuario)
         {
 
           
       ?>
+      <form class="form-horizontal" role="form" method="post" action="editarusuario.php">
         <tr>
-          <td><?php print $usuarios['first_name'] . "\r\n";?></td>
-          <td><?php print $usuarios['last_name']. "\r\n";?></td>
-          <td><?php print $usuarios['email']. "\r\n";?></td>
+          <td>      
+          <input type="text" class="form-control edit" id="nombre" name="nombre" placeholder="Nombre" required
+          <?php if(isset($usuario['first_name'])) print 'value="'. $usuario['first_name'].'"'?>>
+          </td>
+          <td>      
+          <input type="text" class="form-control edit" id="apellidos" name="apellidos" placeholder="Apellidos" required
+          <?php if(isset($usuario['last_name'])) print 'value="'. $usuario['last_name'].'"'?>>
+          </td>
+          <td>      
+          <input type="text" class="form-control edit" id="email" name="email" placeholder="Email" required
+          <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>
+          </td>
+          <td><input type="hidden" class="form-control edit" id="id" name="id" value="<?php print $usuario['id'];?>"></td>
+          <td><input class="btn btn-default edit" type="submit" value="Editar Usuario" id="editar"></td>
         </tr>
-      </tbody>
-    </table>
+      </form>
     <?php
       }
     }
     ?>
+    </tbody>
     </table>
     </div>
   </body>
