@@ -1,3 +1,18 @@
+<?php  
+      session_start();
+      // echo $_SESSION['order'];
+      // echo $_SESSION['token'];
+      if (isset($_SESSION['token'])) {
+
+      }
+      else {
+        header("location: login.php");
+      }
+
+      require_once("funciones.php");
+      $servicio = "http://136.145.181.112:8080";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!--Configuracion de bootstap-->
@@ -25,21 +40,7 @@
   </head>
 
 <!-- topbar y sidebar -->
-  <header >
-      <?php  
-      session_start();
-      // echo $_SESSION['order'];
-      // echo $_SESSION['token'];
-      if (isset($_SESSION['token'])) {
-
-      }
-      else {
-        header("location: login.php");
-      }
-
-      require_once("funciones.php");
-      $servicio= "http://136.145.181.112:8080";
-      ?>
+  <header>
       <nav class="topbar" >
         <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
         <ul class="nav panel panel-default">
@@ -119,7 +120,7 @@
                 print nl2br("Lon: " . $phones['lon'] . "\r\n");
             }
           }
-            ?>
+        ?>
         <h4>Crear telefono</h4>
           <form>
             <div class="form-group">
@@ -167,14 +168,115 @@
           <h1>Rutas del trolley</h1>
       </div>
 
+<!-- Servicios: Page (Start) -->
+
       <div role="tabpanel" class="tab-pane" id="stars">
+
+          <!-- Servicios: CSS -->
+          <style>
+
+            hr {
+              width: 80%;
+              height: 2px;
+              margin-left: auto;
+              margin-right: auto;
+              background-color:#FF0000;
+              color:#FF0000;
+              border: 0 none;
+              margin-top: 25px;
+              margin-bottom: 30px;
+            }
+
+            #createForm {
+              padding-left: 20%;
+              padding-right: 20%;
+            }
+
+          </style>
+         
           <h1>Servicios</h1>
+          <hr>
+          <h3>Crear Servicio</h3><br>
+
+            <!-- Form for creating a new service. -->
+            <form id='createForm' class='form-inline' role='form' method='post' action='createService.php' target='_self'>
+              <div class='form-group'> 
+                <label for='nombre' class='control-label'> Servicio: </label>
+                <input type='text' class='form-control edit' maxlength='40' id='name' name='name' placeholder='Nombre' required>
+              </div>
+              <div class='form-group'>
+                <label for='telefono' class='control-label'> Telefono: </label>
+                <input type='tel' class='form-control edit' maxlength='12' pattern='[\d-]{10,12}' id='telephone' name='telephone' placeholder='Numero' required>
+              </div>
+              <button type='submit' class='btn btn-default'> Crear </button>
+            </form>
+              
+          <hr>
+          <!-- REMOVE? --><!-- <h3>Servicios Disponibles</h3> -->
+
           <?php
           // curl -X GET -H "Authorization: Token 709f60c18e51e49a971cc1f4642f76b6c5f4372f" http://136.145.181.112:8080/services/
-          $servicio=curl_get($servicio, "servicio", $_SESSION['token']);
+          $servicio = curl_get($servicio, "services", $_SESSION['token']) ;
           ?>
+
+              <!-- Code for displaying available services -->
+              <?php  
+                // Displays services in a table if available
+                if(count($servicio))
+                {
+                  // Prints table tags if services are available
+                  print("<table class='table table-striped table-hover table-condensed table-editable'>\n") ;
+                  print("\t\t<caption style='text-align: center;'><h3> Servicios Disponibles </h3></caption>\n") ;
+                  print("\t\t<thead>\n\t\t  <tr>\n") ;
+                  print("\t\t    <th> #ID      </th>\n") ;  
+                  print("\t\t    <th> Servicio </th>\n") ;
+                  print("\t\t    <th> Telefono </th>\n") ;
+                  print("\t\t    <th>         </th>\n") ;
+                  print("\t\t  </tr>\n\t\t</thead>\n") ;
+                  print("\t\t<tbody>") ;
+                  // Displays services
+                  foreach($servicio['results'] as $servicio)
+                  {
+              ?> 
+                    <!-- Form for viewing, and editing, each available service -->
+                    <form class='form-horizontal' role='form' method='put' action='editService.php'>
+                      <tr class='form-group form-inline'>
+                        <td>
+                          <?php print $servicio['id'] . "\n" ?>
+                          <input type='hidden' id='id' name='id' value='<?php print $servicio['id']; ?>'>
+                        </td>
+                        <td>
+                          <div class='form-group'>
+                            <input type='text' class='form-control edit' maxlenght='40' pattern='[a-zA-Z\d.*]{3,}' id='name' name='name' placeholder='Nombre' required
+                            <?php if(isset($servicio['name'])) print 'value=\'' . $servicio['name'] . '\''; ?>>
+                          <div> 
+                        </td>
+                        <td>
+                          <div class='form-group'>
+                            <input type='tel' class='form-control edit' maxlength='10' pattern='[\d]{10}' id='telephone' name='telephone' placeholder='Numero' required
+                            <?php if(isset($servicio['telephone'])) print 'value=\'' . $servicio['telephone'] . '\''; ?>>
+                          <div>
+                        </td>
+                        <td class='form-group'>
+                          <div class='form-group'>
+                            <button type='submit' class='btn-default form-control edit'  value='Actualizar' id='editar'> Actualizar </button>
+                            <!-- <button type='submit' class='btn-default form-control edit'  value='Borrar' id='borrar'> Borrar </button> -->
+                          </div>
+                        </td>       
+                      </tr>
+                    </form>               
+              <?php
+                  }
+                  print("  </tbody>\n") ;
+                  print("\t      </table>\n") ;
+                }
+              ?>
+
       </div>
 
+<!-- Servicios: Page (End) -->
+
     </div>
+
   </body>
 </html>

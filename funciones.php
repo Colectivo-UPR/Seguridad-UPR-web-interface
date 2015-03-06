@@ -6,10 +6,9 @@ function curl_post($server, $route, $datos, $token = NULL)
 {
 	$service_url = "$server/$route/";
 	$curl = curl_init($service_url);
-	$curl_post_data =$datos;
+	$curl_post_data = $datos;
 	//var_dump($curl_post_data);
-	//$curl_post_data =json_decode($datos,true);
-	//var_dump($curl_post_data);
+	//$curl_post_data = json_decode($datos,true);
 
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_POST, true);
@@ -38,7 +37,6 @@ function curl_get($server, $route, $token)
 	$curl = curl_init($service_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Token $token"));
-	
 	$curl_response = curl_exec($curl);
 	$info = curl_getinfo($curl);
 
@@ -57,6 +55,25 @@ function curl_get($server, $route, $token)
 
 	//print_r($info);
 	return $decoded;
+}
+
+function curl_put($server, $route, $id, $datos, $token = NULL){
+	$service_url = "$server/$route/$id/" ;
+	//print $service_url ;
+	$curl = curl_init($service_url) ;
+	$curl_post_data = $datos ;
+
+	curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true) ;
+	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Token $_SESSION[token]")) ;
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data) ;
+
+	$response = curl_exec($curl) ;
+	$info = curl_getinfo($curl) ;
+
+	if (!$response) {
+		    die("Connection Failure.n") ;
+	}
 }
 
 ?>
