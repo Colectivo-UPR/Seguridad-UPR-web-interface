@@ -225,13 +225,13 @@
                 if(count($servicio))
                 {
                   // Prints table tags if services are available
+                  $i = 0 ;
                   print("<table class='table table-striped table-hover table-condensed table-editable'>\n") ;
                   print("\t\t<caption style='text-align: center;'><h3> Servicios Disponibles </h3></caption>\n") ;
                   print("\t\t<thead>\n\t\t  <tr>\n") ;
-                  print("\t\t    <th> #ID      </th>\n") ;  
+                  print("\t\t    <th> # </th>\n") ;  
                   print("\t\t    <th> Servicio </th>\n") ;
                   print("\t\t    <th> Telefono </th>\n") ;
-                  print("\t\t    <th>         </th>\n") ;
                   print("\t\t  </tr>\n\t\t</thead>\n") ;
                   print("\t\t<tbody>") ;
                   // Displays services
@@ -242,8 +242,8 @@
                     <form class='form-horizontal' role='form' method='put' action='editService.php'>
                       <tr class='form-group form-inline'>
                         <td>
-                          <?php print $servicio['id'] . "\n" ?>
-                          <input type='hidden' id='id' name='id' value='<?php print $servicio['id']; ?>'>
+
+                          <?php $i++ ; print "$i" . "\n" ?>
                         </td>
                         <td>
                           <div class='form-group'>
@@ -259,8 +259,9 @@
                         </td>
                         <td class='form-group'>
                           <div class='form-group'>
-                            <button type='submit' class='btn-default form-control edit'  value='Actualizar' id='editar'> Actualizar </button>
-                            <!-- <button type='submit' class='btn-default form-control edit'  value='Borrar' id='borrar'> Borrar </button> -->
+                            <input type='hidden' id='id' name='id' value='<?php print $servicio['id']; ?>'>
+                            <button type='submit' class='btn-default form-control edit'  value='Actualizar' id='editar'> Editar </button>
+                            <button type='submit' class='btn-default form-control edit'  value='Borrar' id='borrar' formmethod='delete' formaction='deleteService.php' formtarget='_self'> Borrar </button>
                           </div>
                         </td>       
                       </tr>

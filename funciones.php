@@ -59,7 +59,6 @@ function curl_get($server, $route, $token)
 
 function curl_put($server, $route, $id, $datos, $token = NULL){
 	$service_url = "$server/$route/$id/" ;
-	//print $service_url ;
 	$curl = curl_init($service_url) ;
 	$curl_post_data = $datos ;
 
@@ -68,12 +67,50 @@ function curl_put($server, $route, $id, $datos, $token = NULL){
 	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Token $_SESSION[token]")) ;
 	curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data) ;
 
-	$response = curl_exec($curl) ;
+	$curl_response = curl_exec($curl) ;
 	$info = curl_getinfo($curl) ;
 
-	if (!$response) {
-		    die("Connection Failure.n") ;
+	if ($curl_response === false) 
+	{
+		curl_close($curl);
+		die('error: ' . var_export($info));
 	}
+
+	curl_close($curl);
+	$decoded = json_decode($curl_response, true);
+
+	if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+		die('error occured: ' . $decoded->response->errormessage);
+	}
+
+	return $decoded;
+}
+
+function curl_delete($server, $route, $id, $token = NULL){
+	$service_url = "$server/$route/$id/" ;
+	$curl = curl_init($service_url) ;
+
+	curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE') ;
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true) ;
+	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Token $_SESSION[token]")) ;
+
+	$curl_response = curl_exec($curl) ;
+	$info = curl_getinfo($curl) ;
+	
+	if ($curl_response === false) 
+	{
+		curl_close($curl) ;
+		die('error: ' . var_export($info)) ;
+	}
+
+	curl_close($curl) ;
+	$decoded = json_decode($curl_response, true) ;
+
+	if (isset($decoded->response->status) && $decoded->response->status == 'ERROR'){
+		die('error occured: ' . $decoded->response->errormessage) ;
+	}
+
+	return $decoded ;
 }
 
 ?>
