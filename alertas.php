@@ -61,6 +61,43 @@
 
   <body>
     <div class="tab-content container-fluid content" >
+      <!--alertas y reportes-->
+      <h1>Incidentes</h1>
+      <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
+      Crear incidente
+      </button>
+      <form action="order.php">
+      <input class="btn btn-default" type="submit" value="Cambiar el orden " id="order">
+      </form>
+      <div id="panel_incidenteN" class="collapse"><div id="incidenteN"></div></div>
+      <script>
+      $('#incidenteN').load('info_incidente.php').fadeIn("slow");
+      </script>
+      <div>
+        <?php 
+        $incidentes= curl_get($servicio, "incidents"  . $_SESSION['// se supone que sea order'], $_SESSION['token']);
+        if(count($incidentes))
+        {
+          $i=0;
+          foreach($incidentes['results'] as $incidente)
+          {
+          ?>
+          <tr>
+          <td>
+              <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
+                <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
+              </button>
+              <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
+              <script>
+                $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
+              </script>
+          </td>
+          </tr>
+          <?php
+            $i++;
+          }
+        }
+        ?>
     </div>
   </body>
 </html>

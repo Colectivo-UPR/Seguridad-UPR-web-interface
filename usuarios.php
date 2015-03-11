@@ -22,6 +22,7 @@ $server= "http://136.145.181.112:8080";
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/me.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -35,22 +36,21 @@ $server= "http://136.145.181.112:8080";
   </head>
 
 <!-- topbar y sidebar -->
-  <header >
-      <nav class="topbar">
-        <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
-        <ul class="nav panel panel-default">
-          <li><a class="activo" href="usuarios.php">Usuarios</a></li>
-          <li class="navbar-right"><a href="logout.php">Logout</a></li>
-        </ul>
-      </nav>
-      <nav class="sidebar">
-        <ul class="vertical nav" >
-          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/world.png" /></a></li>
-          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/phone.png" /></a></li>
-          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/sign.png" /></a></li>
-          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/trolley.png" /></a></li>
-          <li role="presentation" class="active"><a role="tab" data-toggle="tab" ><img src="imagenes/stars.png" /></a></li>
-        </ul>
+  <header>
+    <nav class="topbar" >
+      <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
+      <ul class="nav panel panel-default">
+        <li class="navbar-right"><a href="logout.php">Logout</a></li>
+      </ul>
+    </nav>
+
+    <nav class="sidebar">
+      <ul class="vertical nav" >
+        <li ><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
+        <li role="presentation"><a href="alertas.php"  ><h1><i class="fa fa-exclamation-circle"></i></h1></i></a></li>
+        <li role="presentation"><a href="usuarios.php" ><h1><i class="fa fa-user"></i></h1></a></li>
+        <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
+      </ul>
   </header>
 
   <body>
@@ -102,6 +102,7 @@ $server= "http://136.145.181.112:8080";
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>E-Mail</th>
+          <th>Modificar</th>
         </tr>
       </thead>
       <tbody>
@@ -114,22 +115,28 @@ $server= "http://136.145.181.112:8080";
 
           
       ?>
-      <form class="form-horizontal" role="form" method="post" action="editarusuario.php">
+      <form class="form-horizontal" role="form" method="put" action="editarusuario.php">
         <tr>
           <td>      
-          <input type="text" class="form-control edit" id="nombre" name="nombre" placeholder="Nombre" required
+          <input type="text" class="form-control edit" id="nombre" name="nombre" placeholder="Nombre"
           <?php if(isset($usuario['first_name'])) print 'value="'. $usuario['first_name'].'"'?>>
           </td>
           <td>      
-          <input type="text" class="form-control edit" id="apellidos" name="apellidos" placeholder="Apellidos" required
+          <input type="text" class="form-control edit" id="apellidos" name="apellidos" placeholder="Apellidos"
           <?php if(isset($usuario['last_name'])) print 'value="'. $usuario['last_name'].'"'?>>
           </td>
           <td>      
-          <input type="text" class="form-control edit" id="email" name="email" placeholder="Email" required
+          <input type="text" class="form-control edit" id="email" name="email" placeholder="Email"
           <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>
           </td>
-          <td><input type="hidden" class="form-control edit" id="id" name="id" value="<?php print $usuario['id'];?>"></td>
-          <td><input class="btn btn-default edit" type="submit" value="Editar Usuario" id="editar"></td>
+          <td class='form-group form-inline'>
+            <div class='form-group'>
+              <input type='hidden' id='id' name='id' value='<?php print $usuario['id']; ?>'>
+              <button type='submit' class='btn-default form-control edit'  value='' id='editar'> Editar </button>
+              <button type='submit' class='btn-default form-control edit'  value='Borrar' id='borrar' formmethod='delete' 
+              formaction='borrarUsuario.php' formtarget='_self'> Borrar </button>
+            </div>
+          </td>  
         </tr>
       </form>
     <?php
