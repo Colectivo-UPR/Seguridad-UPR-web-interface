@@ -1,16 +1,16 @@
 <?php  
-      session_start();
-      // echo $_SESSION['order'];
-      // echo $_SESSION['token'];
-      if (isset($_SESSION['token'])) {
+  session_start();
+  // echo $_SESSION['order'];
+  // echo $_SESSION['token'];
+  if (isset($_SESSION['token'])) {
 
-      }
-      else {
-        header("location: login.php");
-      }
+  }
+  else {
+    header("location: login.php");
+  }
 
-      require_once("funciones.php");
-      $servicio = "http://136.145.181.112:8080";
+  require_once("funciones.php");
+  $servicio = "http://136.145.181.112:8080";
 ?>
 
 <!DOCTYPE html>
