@@ -102,6 +102,7 @@ $server= "http://136.145.181.112:8080";
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>E-Mail</th>
+          <th>Password</th>
           <th>Modificar</th>
         </tr>
       </thead>
@@ -118,16 +119,19 @@ $server= "http://136.145.181.112:8080";
       <form class="form-horizontal" role="form" method="put" action="editarusuario.php">
         <tr>
           <td>      
-          <input type="text" class="form-control edit" id="nombre" name="nombre" placeholder="Nombre"
+          <input type="text" class="form-control edit" id="nombre" name="nombre" placeholder="Nombre" required 
           <?php if(isset($usuario['first_name'])) print 'value="'. $usuario['first_name'].'"'?>>
           </td>
           <td>      
-          <input type="text" class="form-control edit" id="apellidos" name="apellidos" placeholder="Apellidos"
+          <input type="text" class="form-control edit" id="apellidos" name="apellidos" placeholder="Apellidos" required 
           <?php if(isset($usuario['last_name'])) print 'value="'. $usuario['last_name'].'"'?>>
           </td>
           <td>      
-          <input type="text" class="form-control edit" id="email" name="email" placeholder="Email"
+          <input type="text" class="form-control edit" id="email" name="email" placeholder="Email" required 
           <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>
+          </td>
+          <td>      
+          <input type="text" class="form-control edit" id="password" name="password" placeholder="Password" required
           </td>
           <td class='form-group form-inline'>
             <div class='form-group'>

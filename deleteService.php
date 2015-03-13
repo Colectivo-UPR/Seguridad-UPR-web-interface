@@ -9,7 +9,7 @@
 		$id = $_GET['id'] ;
 		$datos = array('name' => $_POST['name'], 'telephone' => $_POST['telephone']) ;
 
-		curl_delete($server, $route, $id, $datos, $_SESSION['token']) ;
+		curl_delete($server, $route, $id, $_SESSION['token']) ;
 
 		header('location: localhost:800/index.php#stars') ;
 	}
