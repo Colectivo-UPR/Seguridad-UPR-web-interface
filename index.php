@@ -55,7 +55,7 @@
         <li ><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
         <li role="presentation"><a href="alertas.php"  ><h1><i class="fa fa-exclamation-circle"></i></h1></i></a></li>
         <li role="presentation"><a href="usuarios.php" ><h1><i class="fa fa-user"></i></h1></a></li>
-        <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
+        <li role="presentation"><a href="securityPhones.php" ><img src="imagenes/stars.png" /></a></li>
       </ul>
   </header>
 

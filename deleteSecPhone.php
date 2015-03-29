@@ -3,14 +3,14 @@
 	if(isset($_SESSION['token'])){
 		require_once('funciones.php');
 		$server = 'http://136.145.181.112:8080';
-		$route = 'edit-service';
+		$route = 'edit-official-phone';
 		$id = $_GET['id'];
 
 		curl_delete($server, $route, $id, $_SESSION['token']);
 
-		header('location: servicios.php');
+		header('location: securityPhones.php');
 	}
 	else{
-		header('location: servicios.php');
+		header('location: securityPhones.php');
 	}
 ?>

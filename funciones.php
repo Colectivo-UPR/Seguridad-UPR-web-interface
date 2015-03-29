@@ -27,7 +27,6 @@ function curl_post($server, $route, $datos, $token = NULL)
 		die('error occured: ' . $decoded->response->errormessage);
 	}
 	return $decoded;
-
 }
 
 function curl_get($server, $route, $token)
