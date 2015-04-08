@@ -52,11 +52,12 @@
 
     <nav class="sidebar">
       <ul class="vertical nav" >
-        <li ><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
-        <li role="presentation"><a href="alertas.php"  ><h1><i class="fa fa-exclamation-circle"></i></h1></i></a></li>
-        <li role="presentation"><a href="usuarios.php" ><h1><i class="fa fa-user"></i></h1></a></li>
+        <li role="presentation"><a href="alertas.php" ><img src="imagenes/alertas.png" /></a></li>
+        <li role="presentation"><a href="usuarios.php" ><img src="imagenes/usuarios.png" /></a></li>
+        <li role="presentation"><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
         <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
       </ul>
+    </nav>
   </header>
 
   <body>

@@ -52,23 +52,21 @@
 
     <nav class="sidebar">
       <ul class="vertical nav" >
-        <li ><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
-        <li role="presentation"><a href="alertas.php"  ><h1><i class="fa fa-exclamation-circle"></i></h1></i></a></li>
-        <li role="presentation"><a href="usuarios.php" ><h1><i class="fa fa-user"></i></h1></a></li>
+        <li role="presentation"><a href="alertas.php" ><img src="imagenes/alertas.png" /></a></li>
+        <li role="presentation"><a href="usuarios.php" ><img src="imagenes/usuarios.png" /></a></li>
+        <li role="presentation"><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
         <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
       </ul>
+    </nav>
   </header>
 
   <body>
     <div class="tab-content container-fluid content" >
       <!--alertas y reportes-->
-      <h1>Incidentes</h1>
+      <h1>Avisos de Emergencia</h1>
       <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
-      Crear incidente
+      Crear aviso
       </button>
-      <form action="order.php">
-      <input class="btn btn-default" type="submit" value="Cambiar el orden " id="order">
-      </form>
       <div id="panel_incidenteN" class="collapse"><div id="incidenteN"></div></div>
       <script>
       $('#incidenteN').load('info_incidente.php').fadeIn("slow");

@@ -43,14 +43,15 @@ $server= "http://136.145.181.112:8080";
         <li class="navbar-right"><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
-
+    
     <nav class="sidebar">
       <ul class="vertical nav" >
-        <li ><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
-        <li role="presentation"><a href="alertas.php"  ><h1><i class="fa fa-exclamation-circle"></i></h1></i></a></li>
-        <li role="presentation"><a href="usuarios.php" ><h1><i class="fa fa-user"></i></h1></a></li>
+        <li role="presentation"><a href="alertas.php" ><img src="imagenes/alertas.png" /></a></li>
+        <li role="presentation"><a href="usuarios.php" ><img src="imagenes/usuarios.png" /></a></li>
+        <li role="presentation"><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
         <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
       </ul>
+    </nav>
   </header>
 
   <body>
@@ -80,10 +81,15 @@ $server= "http://136.145.181.112:8080";
       </div>
 
       <div class="form-group">
-        <label for="telefono" class="col-sm-3 control-label">Password</label>
-        <div class="col-sm-9">
-          <input type="password" class="form-control form-login" id="password" name="password" placeholder="password" required>
-        </div>
+        <label class="control-label col-sm-3" for="tipo">Tipo</label>
+        <div class="col-sm-6 col-md-4">
+          <select id="tipo" class="form-control">
+            <option value="is_director">Director</option>
+            <option value="is_chief_manager">Ecargado de Turno</option>
+            <option value="is_official">Oficial</option>
+          </select> 
+      </div>
+
       </div>
 
       <div class="col-sm-offset-2 col-sm-10">
@@ -102,7 +108,7 @@ $server= "http://136.145.181.112:8080";
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>E-Mail</th>
-          <th>Password</th>
+          <th>Tipo</th>
           <th>Modificar</th>
         </tr>
       </thead>
@@ -131,7 +137,7 @@ $server= "http://136.145.181.112:8080";
           <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>
           </td>
           <td>      
-          <input type="text" class="form-control edit" id="password" name="password" placeholder="Password" required
+          Tipe de Usuario
           </td>
           <td class='form-group form-inline'>
             <div class='form-group'>
