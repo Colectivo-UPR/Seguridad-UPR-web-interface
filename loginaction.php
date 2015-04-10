@@ -9,18 +9,17 @@ session_start();
 
 require_once("funciones.php");
 $server= "http://136.145.181.112:8080";
-$route= "api-token-auth";
+$route= "rest-auth/login";
 //print_r($_POST);
 $datos= array("username"=>$_POST['username'],"password"=>$_POST['password']);
 //colectivo.upr@gmail.com
 //colectivo!uprrp
 $token=curl_post($server, $route, $datos, $token = NULL);
-// var_dump($token);
+var_dump($token);
 
-if($token["token"])
+if($token["key"])
 {
-	$_SESSION['token'] = $token["token"];
-	// $_SESSION['order'] = "/";
+	$_SESSION['token'] = $token["key"]; 
 	header("Location: index.php");
 }
 else
