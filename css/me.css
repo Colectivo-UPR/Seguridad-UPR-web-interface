@@ -93,6 +93,12 @@ table {
 	text-align: center;
 }
 
+a:hover, a:active, a:focus {
+ outline: none;
+ background: transparent ! important;
+}
+
+
 .stacked {
 	display: block;
 }
