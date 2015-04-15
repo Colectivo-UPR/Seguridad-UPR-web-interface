@@ -97,7 +97,7 @@ $server= "http://136.145.181.112:8080";
  
     </form>
 
-    <table class="table table-condensed">
+    <table class="table table-condensed table-editable">
     <?php
     //curl GET -H "Authorization: Token <token>" 136.145.181.112:8080/staff-users/
     $usuarios = curl_get($server, "staff-users", $_SESSION['token']);
@@ -119,7 +119,7 @@ $server= "http://136.145.181.112:8080";
       if(count($usuarios))
       {
         $i=0;
-        foreach($usuarios['results'] as $usuario)
+        foreach($usuarios as $usuario)
         {
 
           
