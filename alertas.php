@@ -73,7 +73,7 @@
       </script>
       <div>
         <?php 
-        $incidentes= curl_get($servicio, "incidents"  . $_SESSION['// se supone que sea order'], $_SESSION['token']);
+        $incidentes= curl_get($servicio, "incidents", $_SESSION['token']);
         if(count($incidentes))
         {
           $i=0;

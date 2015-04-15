@@ -81,20 +81,20 @@ $server= "http://136.145.181.112:8080";
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-3" for="tipo">Tipo</label>
-        <div class="col-sm-6 col-md-4">
-          <select id="tipo" class="form-control">
-            <option value="is_director">Director</option>
-            <option value="is_chief_manager">Ecargado de Turno</option>
-            <option value="is_official">Oficial</option>
-          </select> 
-      </div>
-
-      </div>
+        <label for="tipo" class="col-sm-3 control-label">Tipo</label>
+          <div class="col-sm-9">
+            <select  class="form-control" name="tipo">
+              <option value="is_director">Director</option>
+              <option value="is_chief_manager">Ecargado de Turno</option>
+              <option value="is_official">Oficial</option>
+            </select>
+          </div>
+      </div> 
 
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-default text-center">Env&iacute;a informaci&oacute;n</button>
-      </div>  
+      </div> 
+ 
     </form>
 
     <table class="table table-condensed">
@@ -108,12 +108,13 @@ $server= "http://136.145.181.112:8080";
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>E-Mail</th>
-          <th>Tipo</th>
           <th>Modificar</th>
         </tr>
       </thead>
       <tbody>
+
       <?php
+      var_dump($usuarios);
       if(count($usuarios))
       {
         $i=0;
@@ -134,10 +135,7 @@ $server= "http://136.145.181.112:8080";
           </td>
           <td>      
           <input type="text" class="form-control edit" id="email" name="email" placeholder="Email" required 
-          <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>
-          </td>
-          <td>      
-          Tipe de Usuario
+          <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>    
           </td>
           <td class='form-group form-inline'>
             <div class='form-group'>
