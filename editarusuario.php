@@ -7,5 +7,14 @@ $datos= array("email"=>$_GET["email"], "first_name"=>$_GET["nombre"], "last_name
 $id = $_GET['id'];
 $a = curl_put($server, $route, $id , $datos, $_SESSION['token']);
 var_dump($a);
-// header("location: usuarios.php");
+
+if($_POST['tipoActual'] != $_POST['tipoCambio'] && $_POST['tipoCambio'] != "NO"){
+	$rutaTipo = "staff-permissions/" . $_POST['email'];
+	$datoTipo = array("tipo"=> $_POST['tipoCambio']) ;
+	$tipo = curl_post($server, $rutaTipo, $datoTipo, $_SESSION['token']);
+	echo "TIPO: ";
+	var_dump($tipo);
+}
+
+header("location: usuarios.php");
 ?>
