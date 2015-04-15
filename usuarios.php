@@ -139,7 +139,7 @@ $server= "http://136.145.181.112:8080";
           <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>    
           </td>
           <td>
-          <select  class="form-control" name="tipoCambio">
+          <select  class="form-control edit" name="tipoCambio">
             <option value"NO" ></option>
             <option value="is_director">Director</option>
             <option value="is_chief_manager">Ecargado de Turno</option>
