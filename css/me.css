@@ -42,11 +42,6 @@ a {
 	z-index: 1;
 }
 
-.active > a, a:hover, a:active, a:focus {
-	outline: none;
-	background: transparent ! important;
-}
-
 .vertical {
 	margin-top: 12vh;
 	width: 10vh;
@@ -76,11 +71,6 @@ a {
 	box-shadow: 0px 0px 10px;
 	border-radius: 10px;
 }
-
-ul > .active {
-	background-color: #a91d2a ! important;
-}
-
 
 .form-control { 
 	width: 45vw ! important;
@@ -141,6 +131,12 @@ table {
 	margin-top: 35vh;
 	text-align: center;
 }
+
+a:hover, a:active, a:focus {
+ outline: none;
+ background: transparent ! important;
+}
+
 
 .stacked {
 	display: block;

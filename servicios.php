@@ -126,7 +126,7 @@
             print("\t\t  </tr>\n\t\t</thead>\n") ;
             print("\t\t<tbody>") ;
             //Displays services
-            foreach($servicios['results'] as $servicio)
+            foreach($servicios as $servicio)
             {
         ?> 
               <!-- Form for viewing, and editing, each available service -->

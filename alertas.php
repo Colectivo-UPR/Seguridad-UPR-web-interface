@@ -62,40 +62,53 @@
 
   <body>
     <div class="tab-content container-fluid content" >
-      <!--alertas y reportes-->
       <h1>Avisos de Emergencia</h1>
-      <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#panel_incidenteN">
-      Crear aviso
-      </button>
-      <div id="panel_incidenteN" class="collapse"><div id="incidenteN"></div></div>
-      <script>
-      $('#incidenteN').load('info_incidente.php').fadeIn("slow");
-      </script>
-      <div>
-        <?php 
-        $incidentes= curl_get($servicio, "incidents", $_SESSION['token']);
-        if(count($incidentes))
-        {
-          $i=0;
-          foreach($incidentes['results'] as $incidente)
-          {
-          ?>
-          <tr>
-          <td>
-              <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
-                <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
-              </button>
-              <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
-              <script>
-                $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
-              </script>
-          </td>
-          </tr>
-          <?php
-            $i++;
-          }
-        }
-        ?>
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#alertas" aria-controls="alertas" role="tab" data-toggle="tab">Alertas</a></li>
+          <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab">Reportes</a></li>
+          <li role="presentation"><a href="#querellas" aria-controls="querellas" role="tab" data-toggle="tab">Querellas</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="alertas">
+            <br></br>
+            <div id="incidenteN"></div>
+            <script>
+            $('#incidenteN').load('info_incidente.php');
+            </script>
+            <div>
+              <?php 
+              $incidentes= curl_get($servicio, "incidents", $_SESSION['token']);
+              if(count($incidentes))
+              {
+                $i=0;
+                foreach($incidentes['results'] as $incidente)
+                {
+                ?>
+                <tr>
+                <td>
+                    <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
+                      <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
+                    </button>
+                    <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
+                    <script>
+                      $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
+                    </script>
+                </td>
+                </tr>
+                <?php
+                  $i++;
+                }
+              }
+              ?>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="reportes">...2</div>
+          <div role="tabpanel" class="tab-pane" id="querellas">...3</div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

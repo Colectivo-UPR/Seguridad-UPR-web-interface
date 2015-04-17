@@ -97,7 +97,7 @@ $server= "http://136.145.181.112:8080";
  
     </form>
 
-    <table class="table table-condensed">
+    <table class="table table-condensed table-editable">
     <?php
     //curl GET -H "Authorization: Token <token>" 136.145.181.112:8080/staff-users/
     $usuarios = curl_get($server, "staff-users", $_SESSION['token']);
@@ -108,6 +108,7 @@ $server= "http://136.145.181.112:8080";
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>E-Mail</th>
+          <th>Tipo</th>
           <th>Modificar</th>
         </tr>
       </thead>
@@ -118,7 +119,7 @@ $server= "http://136.145.181.112:8080";
       if(count($usuarios))
       {
         $i=0;
-        foreach($usuarios['results'] as $usuario)
+        foreach($usuarios as $usuario)
         {
 
           
@@ -137,9 +138,19 @@ $server= "http://136.145.181.112:8080";
           <input type="text" class="form-control edit" id="email" name="email" placeholder="Email" required 
           <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>    
           </td>
+          <td>
+          <select  class="form-control edit" name="tipoCambio">
+            <option value"NO" ></option>
+            <option value="is_director">Director</option>
+            <option value="is_chief_manager">Ecargado de Turno</option>
+            <option value="is_official">Oficial</option>
+          </select>
+          </div>
+          </td>
           <td class='form-group form-inline'>
             <div class='form-group'>
               <input type='hidden' id='id' name='id' value='<?php print $usuario['id']; ?>'>
+              <input type='hidden' id='tipoActual' name='tipoActual' value='<?php print $usuario[' LO QUE DIGA EL TIPO']; ?>'>
               <button type='submit' class='btn-default form-control edit'  value='' id='editar'> Editar </button>
               <button type='submit' class='btn-default form-control edit'  value='Borrar' id='borrar' formmethod='delete' 
               formaction='borrarUsuario.php' formtarget='_self'> Borrar </button>

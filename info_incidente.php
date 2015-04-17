@@ -71,8 +71,7 @@ elseif(!$_POST['sometido'])
     <label for="message" class="col-sm-3 control-label">Mensaje</label>
     <div class="col-sm-9">
       <textarea class="form-control" id="message" name="message" placeholder="Mensaje" required>
-      <?php if(isset($datos_proyecto['message'])) print 'value="'.$datos_proyecto['message'].'"'?>
-      </textarea>
+<?php if(isset($datos_proyecto['message'])) print 'value="'.$datos_proyecto['message'].'"'?></textarea>
     </div>
   </div>
 
