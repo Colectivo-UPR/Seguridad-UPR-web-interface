@@ -2,14 +2,21 @@
 session_start();
 require_once("funciones.php");
 $server = "http://136.145.181.112:8080";
+$token=$_SESSION['token'];
+    if (isset($_SESSION['token'])) {
+   //   header("location: index.php");
+}
+    else {
+}
+$token='709f60c18e51e49a971cc1f4642f76b6c5f4372f';
 
 
-$ruta["querella"] = "querella";
-$ruta["querellante"] = "";
-$ruta["perjudicado"] = "";
-$ruta["testigo"] = "";
-$ruta["querellado"] = "";
-$ruta["oficiales_intervinieron"] = "";
+$ruta["querella"] = "querellas";
+$ruta["querellante"] = "querella/querellante";
+$ruta["perjudicado"] = "querella/perjudicado";
+$ruta["testigo"] = "querella/testigo";
+$ruta["querellado"] = "querella/querellado";
+$ruta["oficiales_intervinieron"] = "querella/officiales-intervinieron";
 
 $simples = array("querella","querellante");
 $multiples = array("perjudicado","querellado","testigo","oficiales_intervinieron");
@@ -27,7 +34,9 @@ foreach($multiples as $tt)
 		${$tt}[$k]=array();
 	}
 }
+print_r($_POST);
 
+//print "<br>";
 foreach($_POST as $atributo => $entrada)
 {
 	$tabla = substr($atributo,strrpos($atributo,"_")+1);
@@ -50,12 +59,12 @@ foreach($_POST as $atributo => $entrada)
 	}
 }
 
-//$id_querella=curl_post($server, $ruta_querella, $querella, $token = NULL);
+//$id_querella=curl_post($server, $ruta['querella'], $querella, $token);
 $id_querella =1;
-
+var_dump($id_querella);
 $querellante=array_merge($querellante,array("id_querella" => $id_querella));
-
-//curl_post($server, $ruta["querellante"], $querellante, $token = NULL);
+//print_r($querellante);
+//curl_post($server, $ruta["querellante"], $querellante, $token);
 
 foreach($multiples as $ttt)
 {
@@ -63,11 +72,13 @@ foreach($multiples as $ttt)
 	for($i=1;$i<=$$a;$i++)
 	{
 		$datos=array_merge(${$ttt}[$i],array("id_querella" => $id_querella));
-		//curl_post($server, $ruta[$tt], $datos, $token = NULL);
+		print_r($datos);echo "<br>";
+		curl_post($server, $ruta[$ttt], $datos, $token);
 	}
+
 }
 
-echo "location: querella.php?id=$id_querella";
+//echo "location: querella.php?id=$id_querella";
 //header("location: querella.php?id="$id_querella);
 
 ?>

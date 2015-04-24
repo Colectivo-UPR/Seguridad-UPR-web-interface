@@ -106,7 +106,7 @@ elseif(!$_POST['sometido'])
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Send information</button>
+      <button type="submit" class="btn btn-default">Envía información</button>
     </div>
   </div>
   

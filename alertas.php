@@ -62,16 +62,17 @@
 
   <body>
     <div class="tab-content container-fluid content" >
-      <h1>Avisos de Emergencia</h1>
+ <!--     <h1>Avisos de Emergencia</h1> -->
       <div role="tabpanel">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#alertas" aria-controls="alertas" role="tab" data-toggle="tab">Alertas</a></li>
-          <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab">Reportes</a></li>
-          <li role="presentation"><a href="#querellas" aria-controls="querellas" role="tab" data-toggle="tab">Querellas</a></li>
+          <li role="presentation" class="active"><a href="" aria-controls="alertas" >Avisos</a></li>
+          <li role="presentation"><a href="reportes.php" aria-controls="reportes">Reportes</a></li>
+          <li role="presentation"><a href="querella.php" aria-controls="querellas">Querellas</a></li>
         </ul>
         <!-- Tab panes -->
-        <div class="tab-content">
+         <h2>Generar Aviso de Emergencia</h2>
+       <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="alertas">
             <br></br>
             <div id="incidenteN"></div>

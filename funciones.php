@@ -22,7 +22,7 @@ function curl_post($server, $route, $datos, $token = NULL)
 	}
 	curl_close($curl);
 	$decoded = json_decode($curl_response, true);
-	//print_r($info);
+	print_r($info);
 	if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
 		die('error occured: ' . $decoded->response->errormessage);
 	}
