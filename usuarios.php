@@ -56,7 +56,7 @@ $server= "http://136.145.181.112:8080";
 
   <body>
     <div class="tab-content container-fluid content">
-        <h1>Usuarios</h1>
+    <h1>Usuarios</h1>
 
     <form class="form-horizontal" role="form" method="post" action="useraction.php">
       <div class="form-group">
@@ -81,13 +81,11 @@ $server= "http://136.145.181.112:8080";
       </div>
 
       <div class="form-group">
-        <label for="tipo" class="col-sm-3 control-label">Tipo</label>
-          <div class="col-sm-9">
-            <select  class="form-control" name="tipo">
-              <option value="is_director">Director</option>
-              <option value="is_chief_manager">Ecargado de Turno</option>
-              <option value="is_official">Oficial</option>
-            </select>
+        <label for="tipo" class="col-sm-3 control-label">Tipo(s)</label>
+          <div class="col-sm-9" style="padding-top: 7px">
+            <input type="checkbox" name="director" value="is_director"> Director
+            <input type="checkbox" name="manager" value="is_chief_manager"> Ecargado de Turno
+            <input type="checkbox" name="official" value="is_official"> Oficial
           </div>
       </div> 
 
@@ -139,12 +137,12 @@ $server= "http://136.145.181.112:8080";
           <?php if(isset($usuario['email'])) print 'value="'. $usuario['email'].'"'?>>    
           </td>
           <td>
-          <select  class="form-control edit" name="tipoCambio">
-            <option value"NO" ></option>
-            <option value="is_director">Director</option>
-            <option value="is_chief_manager">Ecargado de Turno</option>
-            <option value="is_official">Oficial</option>
-          </select>
+            <div class="col-sm-9" style="padding-top: 7px">
+              <input type="checkbox" name="director" value="is_director" <?php print ($usuario['is_director']=="true" ? 'checked' : '');?> > Director
+              <input type="checkbox" name="manager" value="is_chief_manager" <?php print ($usuario['is_shift_manager']=="true" ? 'checked' : '');?> > Ecargado de Turno
+              <input type="checkbox" name="official" value="is_official" <?php print ($usuario['is_official']=="true" ? 'checked' : '');?> > Oficial
+            </div>
+          </td>
           </div>
           </td>
           <td class='form-group form-inline'>
