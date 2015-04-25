@@ -25,36 +25,34 @@ $route= "rest-auth/registration";
 $password = generateRandomString();
 $datos= array("email"=>$_POST["email"], "first_name"=>$_POST["nombre"], "last_name"=>$_POST["apellidos"], "password1"=>$password, "password2"=> $password);
 $usuarios=curl_post($server, $route, $datos, $_SESSION['token']);
-print "USUARIOS: ";
-var_dump($usuarios);
 
 
 if (isset($_POST['director'])) {
-	$director = "true";
+	$director = true;
 } else {
-	$director = "false";
+	$director = false;
 }
 
 if (isset($_POST['manager'])) {
-	$manager = "true";
+	$manager = true;
 } else {
-	$manager = "false";
+	$manager = false;
 }
 
 if (isset($_POST['official'])) {
-	$official = "true";
+	$official = true;
 } else {
-	$official = "false";
+	$official = false;
 }
 
 $rutaTipo = "staff-permissions/" . $_POST['email'];
 $datoTipo = array("is_director"=> $director, "is_shift_manager"=> $manager, "is_official"=> $official);
-$tipo = curl_post($server, $rutaTipo, $datoTipo, $_SESSION['token']);
+$tipo = curl_post_json($server, $rutaTipo, $datoTipo, $_SESSION['token']);
 
 var_dump($tipo);
 
 
-// header("location: usuarios.php");
+header("location: usuarios.php");
 // curl -X POST -H "Content-Type: application/json" -d '{"email":"<email>","first_name":"<nombre>","last_name":"<apellido>","password":"<password>"}' https://web.api.url:<port>/registers
 
 ?>
