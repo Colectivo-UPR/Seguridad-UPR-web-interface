@@ -56,6 +56,33 @@ function curl_get($server, $route, $token)
 	return $decoded;
 }
 
+function curl_get_sin_dash($server, $route, $token)
+{
+
+	$service_url = "$server/$route";
+	$curl = curl_init($service_url);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Token $token"));
+	$curl_response = curl_exec($curl);
+	$info = curl_getinfo($curl);
+
+	if ($curl_response === false) 
+	{
+		curl_close($curl);
+		die('error: ' . var_export($info));
+	}
+	curl_close($curl);
+	$decoded = json_decode($curl_response, true);
+
+	if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
+	{
+		die('error occured: ' . $decoded->response->errormessage);
+	}
+
+	//print_r($info);
+	return $decoded;
+}
+
 function curl_put($server, $route, $id, $datos, $token = NULL){
 	$service_url = "$server/$route/$id/" ;
 	$curl = curl_init($service_url) ;

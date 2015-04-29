@@ -1,110 +1,132 @@
 <?php  
-      session_start();
-      // echo $_SESSION['order'];
-      // echo $_SESSION['token'];
-      if (isset($_SESSION['token'])) {
-
-      }
-      else {
-        header("location: login.php");
-      }
-
-      require_once("funciones.php");
-      $servicio = "http://136.145.181.112:8080";
+require_once("headers.php");
+?>
+  <body>
+ <?php
+require_once("tabs.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<!--Configuracion de bootstap-->
-  <head>
-    <title>Seguridad UPRRP</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/me.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-<!-- topbar y sidebar -->
-  <header>
-    <nav class="topbar" >
-      <a href="index.php" class="navbar-brand">Seguridad UPRRP</a>
-      <ul class="nav panel panel-default">
-        <li class="navbar-right"><a href="logout.php">Logout</a></li>
-      </ul>
-    </nav>
-
-    <nav class="sidebar">
-      <ul class="vertical nav" >
-        <li role="presentation"><a href="alertas.php" ><img src="imagenes/alertas.png" /></a></li>
-        <li role="presentation"><a href="usuarios.php" ><img src="imagenes/usuarios.png" /></a></li>
-        <li role="presentation"><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
-        <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <body>
-    <div class="tab-content container-fluid content" >
- <!--     <h1>Avisos de Emergencia</h1> -->
-      <div role="tabpanel">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="" aria-controls="alertas" >Avisos</a></li>
-          <li role="presentation"><a href="reportes.php" aria-controls="reportes">Reportes</a></li>
-          <li role="presentation"><a href="querella.php" aria-controls="querellas">Querellas</a></li>
-        </ul>
-        <!-- Tab panes -->
          <h2>Generar Aviso de Emergencia</h2>
        <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="alertas">
             <br></br>
             <div id="incidenteN"></div>
-            <script>
-            $('#incidenteN').load('info_incidente.php');
-            </script>
-            <div>
-              <?php 
-              $incidentes= curl_get($servicio, "incidents", $_SESSION['token']);
-              if(count($incidentes))
-              {
-                $i=0;
-                foreach($incidentes['results'] as $incidente)
-                {
-                ?>
-                <tr>
-                <td>
-                    <button type="button" class="btn btn-default stacked" data-toggle="collapse" data-target="#panel_incidente<?php print $i;?>">
-                      <?php print $incidente["title"].' '.date("Y-m-d H:i:s", strtotime($incidente["pub_date"]));?>
-                    </button>
-                    <div id="panel_incidente<?php print $i;?>" class="collapse"><div id="incidente<?php print $i;?>"></div></div>
-                    <script>
-                      $('#incidente<?php print $i;?>').load('info_incidente.php?datos=<?php print urlencode(json_encode($incidente));?>').fadeIn("slow");
-                    </script>
-                </td>
-                </tr>
-                <?php
-                  $i++;
-                }
-              }
-              ?>
-            </div>
+<?
+if(isset($_GET['datos']))
+{
+  $datos=json_decode($_GET['datos'],true);
+?>
+  <div class="panel panel-default">
+    <div class="panel-heading">T&iacute;tulo</div>
+    <div class="panel-body">
+    <?php print $datos['title'];?>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">Creado por</div>
+    <div class="panel-body">
+    <?php print $datos['owner'];?>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">Fecha incidente</div>
+    <div class="panel-body">
+    <?php print date("Y-m-d H:i:s", strtotime($datos["pub_date"]));?>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">Mensaje</div>
+    <div class="panel-body">
+    <?php print $datos['message'];?>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">Facultad</div>
+    <div class="panel-body">
+    <?php print $datos['faculty'];?>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">Latitud, longitud</div>
+    <div class="panel-body">
+    <?php print $datos['lat'].", ".$datos['lon'];?>
+    </div>
+  </div>
+  
+<?php
+}
+elseif(!$_POST['sometido'])
+{
+?>
+ <form class="form-horizontal" role="form" method="post" action="alertas.php">
+
+  <div class="form-group">
+    <label for="title" class="col-sm-3 control-label">T&iacute;tulo</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="title" name="title" placeholder="T&iacute;tulo" required
+      <?php if(isset($datos_proyecto['title'])) print 'value="'.$datos_proyecto['title'].'"'?>
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message" class="col-sm-3 control-label">Mensaje</label>
+    <div class="col-sm-9">
+      <textarea class="form-control" id="message" name="message" placeholder="Mensaje" required>
+<?php if(isset($datos_proyecto['message'])) print 'value="'.$datos_proyecto['message'].'"'?></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="faculty" class="col-sm-3 control-label">Facultad</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="faculty" name="faculty" placeholder="Facultad" required
+      <?php if(isset($datos_proyecto['faculty'])) print 'value="'.$datos_proyecto['faculty'].'"'?>
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lat" class="col-sm-3 control-label">Latitud</label>
+    <div class="col-sm-9">
+      <input type="text" pattern="-?\d{1,3}\.\d+" class="form-control" id="lat" name="lat" placeholder="Latitud" required
+      <?php if(isset($datos_proyecto['lat'])) print 'value="'.$datos_proyecto['lat'].'"'?>
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lon" class="col-sm-3 control-label">Longitud</label>
+    <div class="col-sm-9">
+      <input type="text" pattern="-?\d{1,3}\.\d+" class="form-control" id="lon" name="lon" placeholder="Longitud" required
+      <?php if(isset($datos_proyecto['lon'])) print 'value="'.$datos_proyecto['lon'].'"'?>
+      >
+    </div>
+  </div>
+
+      <input type="hidden" class="form-control" id="sometido" name="sometido" value="1">
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Envía información</button>
+    </div>
+  </div>
+  
+</form>
+<?php
+}
+else
+{
+  echo $_POST;
+  unset($_POST['sometido']);
+  $a=curl_post($servicio,"create-alert/",$_POST,$token);
+}
+?>
           </div>
           <div role="tabpanel" class="tab-pane" id="reportes">...2</div>
           <div role="tabpanel" class="tab-pane" id="querellas">...3</div>
