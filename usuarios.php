@@ -113,7 +113,6 @@ $server= "http://136.145.181.112:8080";
       <tbody>
 
       <?php
-      var_dump($usuarios);
       if(count($usuarios))
       {
         $i=0;

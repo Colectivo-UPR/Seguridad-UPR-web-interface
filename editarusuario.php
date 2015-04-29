@@ -3,37 +3,30 @@ session_start();
 require_once("funciones.php");
 $server= "http://136.145.181.112:8080";
 $route= "edit-staff-user";
-$datos= array("email"=>$_GET["email"], "first_name"=>$_GET["nombre"], "last_name"=>$_GET["apellidos"], /* get the tipo de usuario*/);
-$id = $_GET['id'];
-$a = curl_put($server, $route, $id , $datos, $_SESSION['token']);
-var_dump($a);
+$datos= array("email"=>$_GET["email"], "first_name"=>$_GET["nombre"], "last_name"=>$_GET["apellidos"]);
+$a = curl_put($server, $route, $_GET['id'], $datos, $_SESSION['token']);
 
 if (isset($_GET['director'])) {
-	$director = "true";
+	$director = true;
 } else {
-	$director = "false";
+	$director = false;
 }
 
 if (isset($_GET['manager'])) {
-	$manager = "true";
+	$manager = true;
 } else {
-	$manager = "false";
+	$manager = false;
 }
 
 if (isset($_GET['official'])) {
-	$official = "true";
+	$official = true;
 } else {
-	$official = "false";
+	$official = false;
 }
-
-echo $director;
-echo $manager;
-echo $official;
 
 $rutaTipo = "staff-permissions/" . $_GET['email'];
 $datoTipo = array("is_director"=> $director, "is_shift_manager"=> $manager, "is_official"=> $official);
-$tipo = curl_post($server, $rutaTipo, $datoTipo, $_SESSION['token']);
-var_dump($tipo);
+$tipo = curl_post_json($server, $rutaTipo, $datoTipo, $_SESSION['token']);
 
-// header("location: usuarios.php");
+header("location: usuarios.php");
 ?>

@@ -160,3 +160,37 @@ a:hover, a:active, a:focus {
 	height: inherit ! important;
 	width: inherit ! important;
 }
+
+.center-h {
+  text-align: center;
+}
+
+.custom-hr {
+  width: 80%;
+  height: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#FF0000;
+  color:#FF0000;
+  border: 0 none;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.center-form-p {
+	text-align: left;
+}
+
+.center-form {
+  margin-left: 15%; 
+  margin-right: 15%;
+  text-align: center;
+}
+
+.center-form-btn {
+	margin-top: 32px;
+}
+
+.form-width {
+  max-width: 200px;
+}

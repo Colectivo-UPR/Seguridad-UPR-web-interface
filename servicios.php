@@ -57,56 +57,29 @@
 
   <body>
       <div class="tab-content container-fluid content">
-
-        <style>
-
-          table { 
-            table-layout: fixed; 
-          }
-
-          h1, h3 {
-            text-align: center;
-          }
-
-          hr {
-            width: 80%;
-            height: 2px;
-            margin-left: auto;
-            margin-right: auto;
-            background-color:#FF0000;
-            color:#FF0000;
-            border: 0 none;
-            margin-top: 25px;
-            margin-bottom: 30px;
-          }
-
-          #createForm {
-            padding-left: 33%;
-          }
-
-        </style>
        
-        <h1>Servicios</h1>
-        <hr>
-        <h3>Crear Servicio</h3>
+        <h1 class='center-h'>Servicios</h1>
+        <hr class='custom-hr'>
+        <h3 class='center-h'>Crear Servicio</h3>
 
           <!-- Form for creating a new service. -->
-          <form id='createForm' class='form-inline form-padding' role='form' method='post' action='createService.php' target='_self'>
-
-            <label for='nombre' class='control-label'> Servicio: </label>
-            <div class='form-group'> 
-              <input type='text' class='form-control edit' maxlength='30' pattern='[a-zA-Z]{5,30}' id='name' name='name' placeholder='Nombre' required>
+          <form class='center-form form-inline form-padding' role='form' method='post' action='createService.php'>
+            
+            <div class='form-group form-padding'> 
+              <p class='center-form-p'><label for='nombre' class='control-label'> Servicio: </label></p>
+              <p><input type='text' class='form-control form-width' maxlength='30' pattern='[a-zA-Z\s\d]{5,30}' id='name' name='name' placeholder='Nombre' required></p>
             </div>
 
-            <div class='form-group'>
-              <label for='telefono' class='control-label'> Telefono: </label>
-              <input type='tel' class='form-control edit' maxlength='10' pattern='[\d]{10}' id='telephone' name='telephone' placeholder='Numero' required>
+            <div class='form-group form-padding'>
+              <p class='center-form-p'><label for='telefono' class='control-label'> Telefono: </label></p>
+              <p><input type='tel' class='form-control form-width' maxlength='20' pattern='(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}(( |[x ])?\d{4})?' id='telephone' name='telephone' placeholder='Numero' required></p>
             </div>
-            <button type='submit' class='btn btn-default btn-primary'> Crear </button>
+
+            <button type='submit' class='btn center-form-btn btn-default btn-primary'> Crear </button>
 
           </form>
             
-        <hr>
+        <hr class='custom-hr'>
 
         <!-- Code for displaying available services -->
         <?php
@@ -118,7 +91,7 @@
             // Prints table tags if services are available
             $i = 0 ;
             print("<table class='table table-striped table-hover table-condensed table-editable' style='cellspacing: 0px;'>\n") ;
-            print("\t\t<caption style='text-align: center;'><h3> Servicios Disponibles </h3></caption>\n") ;
+            print("\t\t<caption><h3 class='center-h'> Servicios Disponibles </h3></caption>\n") ;
             print("\t\t<thead>\n\t\t  <tr>\n") ;
             print("\t\t    <th style='padding-left: 10%;'> # </th>\n") ;  
             print("\t\t    <th style='padding-left: 20px; width:25%;'> Servicio </th>\n") ;
@@ -137,19 +110,19 @@
                   </td>
                   <td>
                     <div class='form-group form-padding'>
-                      <input type='text' class='form-control' style='max-width:40%;' maxlenght='30' pattern='[a-zA-Z]{5,30}' id='name' name='name' placeholder='Nombre' required
+                      <input type='text' class='form-control form-width' maxlenght='30' pattern='[a-zA-Z\s\d]{5,30}' id='name' name='name' placeholder='Nombre' required
                       <?php if(isset($servicio['name'])) print 'value=\'' . $servicio['name'] . '\''; ?>>
                     <div> 
                   </td>
                   <td>
                     <div class='form-group form-padding'>
-                      <input type='tel' class='form-control edit' maxlength='10' pattern='[\d]{10}' id='telephone' name='telephone' placeholder='Numero' required
+                      <input type='tel' class='form-control edit' maxlenght='20' pattern='(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}(( |[x ])?\d{4})?' id='telephone' name='telephone' placeholder='Numero' required
                       <?php if(isset($servicio['telephone'])) print 'value=\'' . $servicio['telephone'] . '\''; ?>>
                     </div>
                     <div class='form-group form-padding'>
-                        <input type='hidden' id='id' name='id' value='<?php print $servicio['id']; ?>'>
-                        <button type='submit' class='btn-default form-control edit btn-primary'  value='Actualizar' id='editar'> Editar </button>
-                        <button type='submit' class='btn-default form-control edit btn-danger'  value='Borrar' id='borrar' formmethod='delete' formaction='deleteService.php'> Borrar </button>
+                      <input type='hidden' id='id' name='id' value='<?php print $servicio['id']; ?>'>
+                      <button type='submit' class='btn-default form-control edit btn-primary'  value='Actualizar' id='editar'> Editar </button>
+                      <button type='submit' class='btn-default form-control edit btn-danger'  value='Borrar' id='borrar' formmethod='delete' formaction='deleteService.php'> Borrar </button>
                     </div>
                   </td>     
                 </tr>
