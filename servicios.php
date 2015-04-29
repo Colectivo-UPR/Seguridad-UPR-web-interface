@@ -50,7 +50,7 @@
         <li role="presentation"><a href="alertas.php" ><img src="imagenes/alertas.png" /></a></li>
         <li role="presentation"><a href="usuarios.php" ><img src="imagenes/usuarios.png" /></a></li>
         <li role="presentation"><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
-        <li role="presentation"><a href="securityPhones.php" ><img src="imagenes/stars.png" /></a></li>
+        <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
       </ul>
     </nav>
   </header>
