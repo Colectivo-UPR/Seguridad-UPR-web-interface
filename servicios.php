@@ -50,7 +50,7 @@
         <li role="presentation"><a href="alertas.php" ><img src="imagenes/alertas.png" /></a></li>
         <li role="presentation"><a href="usuarios.php" ><img src="imagenes/usuarios.png" /></a></li>
         <li role="presentation"><a href="mundo.php" ><img src="imagenes/world.png" /></a></li>
-        <li role="presentation"><a href="servicios.php" ><img src="imagenes/stars.png" /></a></li>
+        <li role="presentation"><a href="securityPhones.php" ><img src="imagenes/stars.png" /></a></li>
       </ul>
     </nav>
   </header>
@@ -58,9 +58,9 @@
   <body>
       <div class="tab-content container-fluid content">
        
-        <h1>Servicios</h1>
-        <hr>
-        <h3>Crear Servicio</h3>
+        <h1 class='center-h'>Servicios</h1>
+        <hr class='custom-hr'>
+        <h3 class='center-h'>Crear Servicio</h3>
 
           <!-- Form for creating a new service. -->
           <form class='center-form form-inline form-padding' role='form' method='post' action='createService.php'>
@@ -79,7 +79,7 @@
 
           </form>
             
-        <hr>
+        <hr class='custom-hr'>
 
         <!-- Code for displaying available services -->
         <?php
@@ -91,7 +91,7 @@
             // Prints table tags if services are available
             $i = 0 ;
             print("<table class='table table-striped table-hover table-condensed table-editable' style='cellspacing: 0px;'>\n") ;
-            print("\t\t<caption style='text-align: center;'><h3> Servicios Disponibles </h3></caption>\n") ;
+            print("\t\t<caption><h3 class='center-h'> Servicios Disponibles </h3></caption>\n") ;
             print("\t\t<thead>\n\t\t  <tr>\n") ;
             print("\t\t    <th style='padding-left: 10%;'> # </th>\n") ;  
             print("\t\t    <th style='padding-left: 20px; width:25%;'> Servicio </th>\n") ;

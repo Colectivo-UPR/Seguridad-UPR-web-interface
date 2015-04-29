@@ -59,9 +59,9 @@
 
   	<div class="tab-content container-fluid content" >
 
-  		<h1>Telefonos de Oficiales de Seguridad</h1>
-  		<hr>
-  		<h3>Crear Telefono</h3>
+  		<h1 class='center-h'>Telefonos de Oficiales de Seguridad</h1>
+  		<hr class='custom-hr'>
+  		<h3 class='center-h'>Crear Telefono</h3>
 
         <?php $staffUsers = curl_get($server, "staff-users", $_SESSION['token']); ?>
 
@@ -85,7 +85,7 @@
 
         </form>
 
-      <hr>
+      <hr class='custom-hr'>
 
       <!-- Code for displaying available security officials(staff-users) with their current phones. -->
       
@@ -98,7 +98,7 @@
           $i = 0 ;  // For enumerating security phones available.
           // Prints table tags
           print("<table class='table table-striped table-hover table-condensed table-editable'>\n") ;
-          print("\t\t<caption><h3> Telefonos Disponibles </h3></caption>\n") ;
+          print("\t\t<caption><h3 class='center-h'> Telefonos Disponibles </h3></caption>\n") ;
           print("\t\t<thead>\n\t\t  <tr>\n") ; 
           print("\t\t    <th style='padding-left: 10%;'> # </th>\n") ;
           print("\t\t    <th style='padding-left: 20px; width:25%;'> Nombre </th>\n") ;

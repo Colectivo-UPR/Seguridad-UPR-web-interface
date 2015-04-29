@@ -161,11 +161,11 @@ a:hover, a:active, a:focus {
 	width: inherit ! important;
 }
 
-h1, h3 {
+.center-h {
   text-align: center;
 }
 
-hr {
+.custom-hr {
   width: 80%;
   height: 2px;
   margin-left: auto;
