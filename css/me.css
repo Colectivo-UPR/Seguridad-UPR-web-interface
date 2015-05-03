@@ -194,3 +194,19 @@ a:hover, a:active, a:focus {
 .form-width {
   max-width: 200px;
 }
+
+div.pull-right.search > .form-control {
+	max-width: 218.351px;
+}
+
+div.columns-right > .btn {
+	margin: 0px;
+}
+
+.keep-open > .btn {
+	margin: 0px;
+}
+
+div.pull-right.pagination, ul.pagination {
+	margin: 0px;
+}
