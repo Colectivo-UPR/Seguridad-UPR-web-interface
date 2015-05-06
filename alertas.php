@@ -1,5 +1,6 @@
 <?php  
 require_once("headers.php");
+require_once("sendAlert.php"); 
 ?>
   <body>
  <?php
@@ -122,9 +123,18 @@ elseif(!$_POST['sometido'])
 }
 else
 {
-  echo $_POST;
+  echo $_POST; 
   unset($_POST['sometido']);
-  $a=curl_post($servicio,"create-alert/",$_POST,$token);
+
+  // Aquí falta create-alert en nuestra db: 
+  // usar server y route creados abajo
+  $server= "http://136.145.181.112:8080";
+  $route = "create-alert";
+
+  // Enviar request al endpoint en nuestro API que avisa 
+  // a Amazon a que envíe una alerta
+  $b=send_alert("hola mundito cruel");
+  
 }
 ?>
           </div>

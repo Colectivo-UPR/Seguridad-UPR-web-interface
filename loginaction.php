@@ -20,7 +20,7 @@ var_dump($token);
 if($token["key"])
 {
 	$_SESSION['token'] = $token["key"]; 
-	header("Location: index.php");
+	//header("Location: index.php");
 }
 else
 {
